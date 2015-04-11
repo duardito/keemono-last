@@ -13,6 +13,7 @@
         <module>web</module>
         <module>persistence</module>
         <module>service</module>
+        <module>security</module>
     </modules>
 
 
