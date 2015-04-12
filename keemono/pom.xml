@@ -7,7 +7,13 @@
     <groupId>org.com.keemono</groupId>
     <artifactId>keemono</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>${keemono.profect.version}</version>
+
+    <properties>
+        <keemono.profect.version>1.0-SNAPSHOT</keemono.profect.version>
+        <spring.core.version>4.1.6.RELEASE</spring.core.version>
+    </properties>
+
     <modules>
         <module>core</module>
         <module>web</module>
@@ -15,6 +21,14 @@
         <module>service</module>
         <module>security</module>
     </modules>
-
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.core.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
