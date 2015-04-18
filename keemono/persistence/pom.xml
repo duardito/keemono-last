@@ -5,7 +5,7 @@
     <parent>
         <artifactId>keemono</artifactId>
         <groupId>org.com.keemono</groupId>
-        <version>${keemono.profect.version}</version>
+        <version>${keemono.project.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
