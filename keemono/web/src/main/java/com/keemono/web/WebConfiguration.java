@@ -14,8 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories
 @EnableMongoRepositories
 @PropertySource("classpath:config/mongo.properties")
-@ComponentScan(basePackages = {
-        "com.keemono.web",} )
+@ComponentScan(basePackages = {"com.keemono.web",} )
 //@Import({PropertyLoader.class,})
 @Configuration
 public interface WebConfiguration {
