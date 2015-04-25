@@ -3,7 +3,6 @@ package com.keemono.web.config;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -21,7 +20,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
     public void configureDefaultServletHandling(
+
+
             final DefaultServletHandlerConfigurer configurer) {
+
         configurer.enable();
     }
 }
