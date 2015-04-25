@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @EnableTransactionManagement
 @EnableJpaRepositories
-@EnableMongoRepositories
+@EnableMongoRepositories(basePackages = "com.keemono.domain.mongo.*.repository")
 @PropertySource("classpath:config/mongo.properties")
 @ComponentScan(basePackages = {"com.keemono.web",} )
 //@Import({PropertyLoader.class,})

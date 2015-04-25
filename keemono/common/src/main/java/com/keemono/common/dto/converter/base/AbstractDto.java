@@ -1,4 +1,4 @@
-package com.keemono.common.dto.transfomer.base;
+package com.keemono.common.dto.converter.base;
 
 /**
  * Created by edu on 25/4/15.

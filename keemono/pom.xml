@@ -46,6 +46,7 @@
         <module>service</module>
         <module>security</module>
         <module>common</module>
+        <module>integration</module>
     </modules>
 
     <dependencyManagement>

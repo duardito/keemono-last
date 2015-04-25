@@ -1,6 +1,6 @@
-package com.keemono.common.dto.transfomer.page;
+package com.keemono.common.dto.converter.page;
 
-import com.keemono.common.dto.transfomer.base.AbstractConverter;
+import com.keemono.common.dto.converter.base.AbstractDtoConverter;
 import com.keemono.domain.mongo.page.Page;
 import ma.glasnost.orika.CustomMapper;
 import ma.glasnost.orika.MappingContext;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
  * Created by edu on 25/4/15.
  */
 @Component
-public class PageConverter extends AbstractConverter<PageDto, Page> {
+public class PageDtoConverter extends AbstractDtoConverter<PageDto, Page> {
 
-    public PageConverter(){
+    public PageDtoConverter(){
         ClassMapBuilder<PageDto, Page> classMap = getMapperFactory().classMap(PageDto.class, Page.class);
         classMap.byDefault().customize(new CustomMapper<PageDto, Page>() {
             @Override

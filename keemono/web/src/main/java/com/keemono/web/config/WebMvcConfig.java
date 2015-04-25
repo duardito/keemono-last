@@ -15,15 +15,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "com.keemono.web", useDefaultFilters = false, includeFilters = {@ComponentScan.Filter(RestController.class),@ComponentScan.Filter(Controller.class)})
+@ComponentScan(basePackages = "com.keemono.web", useDefaultFilters = false,
+        includeFilters = {@ComponentScan.Filter(RestController.class),@ComponentScan.Filter(Controller.class)})
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
-    public void configureDefaultServletHandling(
-
-
-            final DefaultServletHandlerConfigurer configurer) {
-
+    public void configureDefaultServletHandling(final DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 }
