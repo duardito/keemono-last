@@ -149,6 +149,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    
     <build>
         <resources>
             <!-- include init.properties -->
