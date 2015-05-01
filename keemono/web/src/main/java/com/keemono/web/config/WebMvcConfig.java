@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = "com.keemono.web", useDefaultFilters = false,
+@ComponentScan(basePackages = "com.keemono.integration", useDefaultFilters = false,
         includeFilters = {@ComponentScan.Filter(RestController.class),@ComponentScan.Filter(Controller.class)})
 public class WebMvcConfig extends WebMvcConfigurationSupport {
 

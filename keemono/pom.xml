@@ -37,6 +37,9 @@
         <java-version>1.8</java-version>
         <tomcat.maven.version>2.2</tomcat.maven.version>
         <tomcat.port>9000</tomcat.port>
+
+        <hibernate.entitymanager.version>4.3.9.Final</hibernate.entitymanager.version>
+        <hibernate.jpa.version>1.0.0.Final</hibernate.jpa.version>
     </properties>
 
     <modules>
@@ -51,6 +54,27 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>1.1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>1.1.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.hibernate.javax.persistence</groupId>
+                <artifactId>hibernate-jpa-2.1-api</artifactId>
+                <version>${hibernate.jpa.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>${hibernate.entitymanager.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-framework-bom</artifactId>
@@ -114,6 +138,9 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <dependencies>
+
+    </dependencies>
     <build>
         <resources>
             <!-- include init.properties -->

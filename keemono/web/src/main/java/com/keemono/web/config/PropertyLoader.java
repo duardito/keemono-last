@@ -13,9 +13,8 @@ public class PropertyLoader {
     @Bean
     public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
         PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-                ppc.setLocations(new ClassPathResource("config/init.properties"),
-                        new ClassPathResource("config/mongo.properties"),
-                        new ClassPathResource("config/mysql.properties"));
+                ppc.setLocations(
+                        new ClassPathResource("config/mongo.properties"));
         return ppc;
     }
 }
