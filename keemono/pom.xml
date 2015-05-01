@@ -164,32 +164,18 @@
         <finalName>keemono</finalName>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>properties-maven-plugin</artifactId>
-                <version>1.0-alpha-2</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>set-system-properties</goal>
-                        </goals>
-                        <configuration>
-                            <properties>
-                                <property>
-                                    <name>logback.configurationFile</name>
-                                    <value>src/main/resources/logback.xml</value>
-                                </property>
-                            </properties>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>${tomcat.maven.version}</version>
                 <configuration>
                     <path>/keemono</path>
                     <port>${tomcat.port}</port>
+                    <systemProperties>
+                        <property>
+                            <name>logback.configurationFile</name> -->
+                        <value>src/main/resources/logback.xml</value>
+                        </property>
+                    </systemProperties>
                 </configuration>
             </plugin>
             <plugin>
