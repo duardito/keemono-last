@@ -1,8 +1,9 @@
 package com.keemono.web;
 
+import org.springframework.context.annotation.*;
+
 import com.keemono.configuration.mongo.MongoConnection;
 import com.keemono.configuration.mysql.PersistenceContext;
-import org.springframework.context.annotation.*;
 
 /**
  * Created by edu on 18/04/2015.
