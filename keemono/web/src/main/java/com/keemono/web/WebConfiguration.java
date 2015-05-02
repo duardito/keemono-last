@@ -1,22 +1,18 @@
 package com.keemono.web;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
+import com.keemono.configuration.mongo.MongoConnection;
+import com.keemono.configuration.mysql.PersistenceContext;
+import org.springframework.context.annotation.*;
 
 /**
  * Created by edu on 18/04/2015.
  */
-@EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "com.keemono.domain.mysql.repository")
-@EnableMongoRepositories(basePackages = "com.keemono.domain.mongo.*.repository")
-@PropertySource("classpath:config/mongo.properties")
+@PropertySources({@PropertySource(value = "classpath:config/mysql.properties"),
+                @PropertySource("classpath:config/mongo.properties") })
 @ComponentScan(basePackages = {"com.keemono.web","com.keemono.integration","com.keemono.core", "com.keemono.configuration.mongo"} )
-//@Import({PropertyLoader.class,})
+@Import({PersistenceContext.class, MongoConnection.class})
 @Configuration
-public interface WebConfiguration {
+public class WebConfiguration {
+
 
 }

@@ -2,37 +2,36 @@ package com.keemono.configuration.mongo;
 
 import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.env.Environment;
 import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * Created by edu on 25/4/15.
  */
+@EnableMongoRepositories(basePackages = "com.keemono.domain.mongo.*.repository")
 @Configuration
 public class MongoConnection {
 
     @Autowired
     private Environment environment;
 
-    private @Value("${db.user}") String user;
-    private @Value("${db.password}") String passwd;
-    private @Value("${db.host}") String host;
-    private @Value("${db.port}") int port;
-    private @Value("${db.name}") String dbName;
-
-    @DependsOn("propertyPlaceholderConfigurer")
     @Bean
     public MongoDbFactory mongoDbFactory() throws Exception {
 
+        String port = environment.getProperty("db.port");
+        String dbName = environment.getProperty("db.name");
+        String user= environment.getProperty("db.user");
+        String passwd = environment.getProperty("db.password");
+        String host = environment.getProperty("db.host");
+
         final UserCredentials userCredentials = new UserCredentials(user,passwd);
-        final MongoClient client = new MongoClient(host,port);
+        final MongoClient client = new MongoClient(host,Integer.parseInt(port));
         return new SimpleMongoDbFactory(client, dbName, userCredentials);
     }
 

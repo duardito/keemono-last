@@ -162,14 +162,16 @@
 
     <build>
         <resources>
-            <!-- include init.properties -->
+            <!-- include init.properties-->
             <resource>
                 <directory>src/main/resources</directory>
                 <filtering>true</filtering>
                 <includes>
                     <include>config/mongo.properties</include>
+                    <include>config/mysql.properties</include>
                 </includes>
             </resource>
+
         </resources>
         <finalName>keemono</finalName>
         <plugins>

@@ -1,6 +1,5 @@
 package com.keemono.web.init;
 
-import com.keemono.configuration.mysql.PersistenceContext;
 import com.keemono.web.WebConfiguration;
 import com.keemono.web.filters.SimpleCORSFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -17,7 +16,7 @@ public class WebInitContext extends
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{WebConfiguration.class, PersistenceContext.class};
+        return new Class<?>[]{WebConfiguration.class};
     }
 
     @Override

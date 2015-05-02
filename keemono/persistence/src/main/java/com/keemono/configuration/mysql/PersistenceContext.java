@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -20,7 +21,7 @@ import java.util.Properties;
  * Created by edu on 01/05/2015.
  */
 @Configuration
-//@Import({ BasePersistenceContext.class })
+@EnableJpaRepositories(basePackages = "com.keemono.domain.mysql.repository")
 @ComponentScan(basePackages = { "com.keemono.domain.mysql" })
 @EnableTransactionManagement
 public class PersistenceContext {
