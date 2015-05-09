@@ -1,6 +1,6 @@
-package com.keemono.common.dto.converter.page;
+package com.keemono.common.converter.dto.page;
 
-import com.keemono.common.dto.converter.base.AbstractDto;
+import com.keemono.common.converter.base.AbstractDto;
 
 /**
  * Created by edu on 25/4/15.

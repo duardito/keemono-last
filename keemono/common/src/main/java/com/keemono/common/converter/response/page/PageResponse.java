@@ -1,6 +1,6 @@
-package com.keemono.common.request.converter.page;
+package com.keemono.common.converter.response.page;
 
-import com.keemono.common.request.converter.base.AbstractResponse;
+import com.keemono.common.converter.base.AbstractResponse;
 
 /**
  * Created by edu on 25/04/2015.

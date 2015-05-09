@@ -1,7 +1,7 @@
 package com.keemono.service.page.impl;
 
-import com.keemono.common.dto.converter.page.PageDto;
-import com.keemono.common.dto.converter.page.PageDtoConverter;
+import com.keemono.common.converter.dto.page.PageDto;
+import com.keemono.common.converter.dto.page.PageDtoConverter;
 import com.keemono.domain.mongo.page.Page;
 import com.keemono.domain.mongo.page.repository.IPageRepository;
 import com.keemono.service.page.IPageService;
@@ -23,9 +23,14 @@ public class PageServiceImpl implements IPageService {
 
     @Override
     public PageDto getPageById(String id){
-
         final Page page = pageRepository.findById(id);
+        return pageDtoConverter.createDto(page);
+    }
 
+    @Override
+    public PageDto createPage(PageDto pageDto){
+        Page page = pageDtoConverter.createFromDto(pageDto);
+        page = pageRepository.save(page);
         return pageDtoConverter.createDto(page);
     }
 

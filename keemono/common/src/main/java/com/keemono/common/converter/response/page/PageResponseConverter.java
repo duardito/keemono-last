@@ -1,7 +1,7 @@
-package com.keemono.common.request.converter.page;
+package com.keemono.common.converter.response.page;
 
-import com.keemono.common.dto.converter.page.PageDto;
-import com.keemono.common.request.converter.base.AbstractResponseConverter;
+import com.keemono.common.converter.dto.page.PageDto;
+import com.keemono.common.converter.base.AbstractResponseConverter;
 import ma.glasnost.orika.metadata.ClassMapBuilder;
 import org.springframework.stereotype.Component;
 

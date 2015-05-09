@@ -1,6 +1,6 @@
-package com.keemono.common.dto.converter.page;
+package com.keemono.common.converter.dto.page;
 
-import com.keemono.common.dto.converter.base.AbstractDtoConverter;
+import com.keemono.common.converter.base.AbstractDtoConverter;
 import com.keemono.domain.mongo.page.Page;
 import ma.glasnost.orika.CustomMapper;
 import ma.glasnost.orika.MappingContext;

@@ -1,4 +1,4 @@
-package com.keemono.common.request.converter.base;
+package com.keemono.common.converter.base;
 
 /**
  * Created by edu on 25/04/2015.

@@ -1,6 +1,5 @@
-package com.keemono.common.request.converter.base;
+package com.keemono.common.converter.base;
 
-import com.keemono.common.dto.converter.base.AbstractDto;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.MappingContextFactory;

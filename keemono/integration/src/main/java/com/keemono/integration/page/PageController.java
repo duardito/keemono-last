@@ -1,8 +1,8 @@
 package com.keemono.integration.page;
 
-import com.keemono.common.dto.converter.page.PageDto;
-import com.keemono.common.request.converter.page.PageResponse;
-import com.keemono.common.request.converter.page.PageResponseConverter;
+import com.keemono.common.converter.dto.page.PageDto;
+import com.keemono.common.converter.response.page.PageResponse;
+import com.keemono.common.converter.response.page.PageResponseConverter;
 import com.keemono.service.page.IPageService;
 import com.keemono.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;

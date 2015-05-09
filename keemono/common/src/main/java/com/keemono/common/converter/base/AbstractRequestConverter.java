@@ -1,44 +1,41 @@
-package com.keemono.common.dto.converter.base;
+package com.keemono.common.converter.base;
 
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.MappingContextFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.ParameterizedType;
 
 /**
- * Created by edu on 25/4/15.
+ * Created by edu on 09/05/2015.
  */
-@Component
-public abstract class AbstractDtoConverter<DTO extends AbstractDto, OBJECT>{
-
+public abstract class AbstractRequestConverter <REQUEST extends AbstractRequest, OBJECT extends AbstractDto>{
     private MapperFactory mapperFactory;
     private MappingContextFactory mappingContextFactory;
 
-    private Class<DTO> dtoClass;
+    private Class<REQUEST> dtoClass;
     private Class<OBJECT> entityClass;
 
-    public AbstractDtoConverter() {
+    public AbstractRequestConverter() {
         super();
         mapperFactory = new DefaultMapperFactory.Builder().build();
-        dtoClass = (Class<DTO>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        dtoClass = (Class<REQUEST>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         entityClass = (Class<OBJECT>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[1];
         mappingContextFactory = new MappingContext.Factory();
     }
 
-    public DTO createDto(OBJECT object, String... options) {
+    public REQUEST createDto(OBJECT object, String... options) {
         MappingContext mappingContext = mappingContextFactory.getContext();
 
         for (String option : options) {
             mappingContext.setProperty(option, option);
         }
-        DTO result = getMapperFactory().getMapperFacade().map(object, dtoClass, mappingContext);
+        REQUEST result = getMapperFactory().getMapperFacade().map(object, dtoClass, mappingContext);
         return result;
     }
 
-    public OBJECT createFromDto(DTO object) {
+    public OBJECT createFromDto(REQUEST object) {
         OBJECT result = getMapperFactory().getMapperFacade().map(object, entityClass);
         return result;
     }

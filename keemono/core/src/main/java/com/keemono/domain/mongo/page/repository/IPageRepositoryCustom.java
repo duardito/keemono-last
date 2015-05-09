@@ -7,6 +7,6 @@ import java.io.Serializable;
  */
 public interface IPageRepositoryCustom <M, S extends Serializable> {
 
-    public M findById(String id);
+    M findById(String id);
 
 }
