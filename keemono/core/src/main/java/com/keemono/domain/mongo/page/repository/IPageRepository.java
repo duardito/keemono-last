@@ -6,5 +6,7 @@ import com.keemono.domain.mongo.page.Page;
 /**
  * Created by edu on 25/4/15.
  */
-public interface PageRepository extends MongoRepositoryAbstract<Page,String> {
+public interface IPageRepository extends MongoRepositoryAbstract<Page,String> , IPageRepositoryCustom<Page, String>{
+
+    public Page findById(String id);
 }

@@ -11,4 +11,16 @@
 
     <artifactId>service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.com.keemono</groupId>
+            <artifactId>core</artifactId>
+            <version>${keemono.project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>

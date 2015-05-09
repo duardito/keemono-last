@@ -11,15 +11,15 @@
 
     <artifactId>common</artifactId>
     <dependencies>
-
-        <dependency>
-            <groupId>ma.glasnost.orika</groupId>
-            <artifactId>orika-core</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.com.keemono</groupId>
             <artifactId>core</artifactId>
             <version>${keemono.project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ma.glasnost.orika</groupId>
+            <artifactId>orika-core</artifactId>
         </dependency>
 
         <dependency>

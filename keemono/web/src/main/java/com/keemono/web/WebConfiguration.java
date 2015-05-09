@@ -1,17 +1,20 @@
 package com.keemono.web;
 
+import com.keemono.configuration.PersistenceConfiguration;
+import com.keemono.integration.configuration.IntegrationConfiguration;
+import com.keemono.service.configuration.ServiceConfiguration;
 import org.springframework.context.annotation.*;
-
-import com.keemono.configuration.mongo.MongoConnection;
-import com.keemono.configuration.mysql.PersistenceContext;
 
 /**
  * Created by edu on 18/04/2015.
  */
-@PropertySources({@PropertySource(value = "classpath:config/mysql.properties"),
-                @PropertySource("classpath:config/mongo.properties") })
-@ComponentScan(basePackages = {"com.keemono.web","com.keemono.integration","com.keemono.core", "com.keemono.configuration.mongo"} )
-@Import({PersistenceContext.class, MongoConnection.class})
+@PropertySources({
+                @PropertySource(value = "classpath:config/mysql.properties"),
+                @PropertySource("classpath:config/mongo.properties"),
+                @PropertySource("classpath:config/init.properties")
+                })
+@ComponentScan(basePackages = {"com.keemono.web"} )
+@Import({PersistenceConfiguration.class, ServiceConfiguration.class, IntegrationConfiguration.class})
 @Configuration
 public class WebConfiguration {
 

@@ -1,20 +1,21 @@
 package com.keemono.configuration.mongo;
 
+import com.keemono.domain.mongo.configuration.MongoConfiguration;
 import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * Created by edu on 25/4/15.
  */
-@EnableMongoRepositories(basePackages = "com.keemono.domain.mongo.*.repository")
+@Import({MongoConfiguration.class})
 @Configuration
 public class MongoConnection {
 
