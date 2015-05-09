@@ -6,4 +6,7 @@ import java.io.Serializable;
  * Created by edu on 09/05/2015.
  */
 public interface IPageRepositoryCustom <M, S extends Serializable> {
+
+    public M findById(String id);
+
 }

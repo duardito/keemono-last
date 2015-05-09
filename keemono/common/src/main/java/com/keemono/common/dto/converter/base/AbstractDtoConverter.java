@@ -1,17 +1,18 @@
 package com.keemono.common.dto.converter.base;
 
-import com.keemono.domain.mongo.base.AbstractDocument;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.MappingContextFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.ParameterizedType;
 
 /**
  * Created by edu on 25/4/15.
  */
-public abstract class AbstractDtoConverter<DTO extends AbstractDto, OBJECT extends AbstractDocument>{
+@Component
+public abstract class AbstractDtoConverter<DTO extends AbstractDto, OBJECT>{
 
     private MapperFactory mapperFactory;
     private MappingContextFactory mappingContextFactory;

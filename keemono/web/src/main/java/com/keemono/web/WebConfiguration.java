@@ -1,8 +1,9 @@
 package com.keemono.web;
 
+import com.keemono.configuration.CommonConfiguration;
 import com.keemono.configuration.PersistenceConfiguration;
 import com.keemono.integration.configuration.IntegrationConfiguration;
-import com.keemono.service.configuration.ServiceConfiguration;
+import com.keemono.configuration.ServiceConfiguration;
 import org.springframework.context.annotation.*;
 
 /**
@@ -13,8 +14,8 @@ import org.springframework.context.annotation.*;
                 @PropertySource("classpath:config/mongo.properties"),
                 @PropertySource("classpath:config/init.properties")
                 })
-@ComponentScan(basePackages = {"com.keemono.web"} )
-@Import({PersistenceConfiguration.class, ServiceConfiguration.class, IntegrationConfiguration.class})
+@ComponentScan(basePackages = {"com.keemono.web","com.keemono.common","com.keemono.service"} )
+@Import({PersistenceConfiguration.class, ServiceConfiguration.class, IntegrationConfiguration.class, CommonConfiguration.class})
 @Configuration
 public class WebConfiguration {
 

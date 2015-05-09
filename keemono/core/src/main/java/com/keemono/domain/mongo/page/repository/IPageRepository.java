@@ -8,5 +8,5 @@ import com.keemono.domain.mongo.page.Page;
  */
 public interface IPageRepository extends MongoRepositoryAbstract<Page,String> , IPageRepositoryCustom<Page, String>{
 
-    public Page findById(String id);
+
 }

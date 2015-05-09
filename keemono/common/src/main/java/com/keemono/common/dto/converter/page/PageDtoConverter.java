@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * Created by edu on 25/4/15.
  */
 @Component
-public class PageDtoConverter extends AbstractDtoConverter<PageDto, Page> {
+public  class PageDtoConverter extends AbstractDtoConverter<PageDto, Page> {
 
     public PageDtoConverter(){
         ClassMapBuilder<PageDto, Page> classMap = getMapperFactory().classMap(PageDto.class, Page.class);

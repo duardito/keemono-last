@@ -1,6 +1,6 @@
 package com.keemono.common.request.converter.base;
 
-import com.keemono.domain.mongo.base.AbstractDocument;
+import com.keemono.common.dto.converter.base.AbstractDto;
 import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.MappingContextFactory;
@@ -11,7 +11,7 @@ import java.lang.reflect.ParameterizedType;
 /**
  * Created by edu on 25/04/2015.
  */
-public abstract class AbstractResponseConverter <RESPONSE extends AbstractResponse, OBJECT extends AbstractDocument>{
+public abstract class AbstractResponseConverter <RESPONSE extends AbstractResponse, OBJECT extends AbstractDto>{
 
     private MapperFactory mapperFactory;
     private MappingContextFactory mappingContextFactory;

@@ -1,11 +1,11 @@
 package com.keemono.service.page;
 
-import com.keemono.domain.mongo.page.Page;
+import com.keemono.common.dto.converter.page.PageDto;
 
 /**
  * Created by edu on 09/05/2015.
  */
 public interface IPageService {
 
-    Page getPageById(String id);
+    PageDto getPageById(String id);
 }
