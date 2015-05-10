@@ -2,8 +2,8 @@ package com.keemono.service.page.impl;
 
 import com.keemono.common.converter.dto.page.PageDto;
 import com.keemono.common.converter.dto.page.PageDtoConverter;
-import com.keemono.domain.mongo.page.Page;
-import com.keemono.domain.mongo.page.repository.IPageRepository;
+import com.keemono.core.mongo.domain.page.Page;
+import com.keemono.core.mongo.repository.page.IPageRepository;
 import com.keemono.service.page.IPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

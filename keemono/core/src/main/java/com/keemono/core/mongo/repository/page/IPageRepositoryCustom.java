@@ -1,4 +1,4 @@
-package com.keemono.domain.mongo.page.repository;
+package com.keemono.core.mongo.repository.page;
 
 import java.io.Serializable;
 

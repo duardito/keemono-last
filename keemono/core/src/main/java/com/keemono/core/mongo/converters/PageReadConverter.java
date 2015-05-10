@@ -1,7 +1,7 @@
-package com.keemono.domain.mongo.converters;
+package com.keemono.core.mongo.converters;
 
-import com.keemono.domain.mongo.page.Layout;
-import com.keemono.domain.mongo.page.Page;
+import com.keemono.core.mongo.domain.layout.Layout;
+import com.keemono.core.mongo.domain.page.Page;
 import com.mongodb.DBObject;
 import org.springframework.core.convert.converter.Converter;
 

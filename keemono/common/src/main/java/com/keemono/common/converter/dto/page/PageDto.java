@@ -6,6 +6,7 @@ import com.keemono.common.converter.base.AbstractDto;
  * Created by edu on 25/4/15.
  */
 public class PageDto extends AbstractDto {
+
     private String layout;
 
     private String name;

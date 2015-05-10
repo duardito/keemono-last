@@ -1,4 +1,4 @@
-package com.keemono.domain.mongo.base;
+package com.keemono.core.mongo.base;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;

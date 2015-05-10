@@ -1,6 +1,6 @@
 package com.keemono.configuration.mongo;
 
-import com.keemono.domain.mongo.configuration.MongoConfiguration;
+import com.keemono.core.mongo.configuration.MongoConfiguration;
 import com.mongodb.MongoClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

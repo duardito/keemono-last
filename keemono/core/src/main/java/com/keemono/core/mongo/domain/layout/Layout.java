@@ -1,6 +1,6 @@
-package com.keemono.domain.mongo.page;
+package com.keemono.core.mongo.domain.layout;
 
-import com.keemono.domain.mongo.base.AbstractDocument;
+import com.keemono.core.mongo.base.AbstractDocument;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 

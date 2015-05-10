@@ -1,6 +1,6 @@
-package com.keemono.domain.mongo.page.repository;
+package com.keemono.core.mongo.repository.page;
 
-import com.keemono.domain.mongo.page.Page;
+import com.keemono.core.mongo.domain.page.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
