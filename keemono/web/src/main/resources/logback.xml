@@ -29,13 +29,13 @@
 	<logger name="com.zaxxer.hikari" level="INFO" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
-<<<<<<< Updated upstream
+
 <!--
 	<logger name="org.hibernate.type" level="TRACE">
 		<appender-ref ref="STDOUT-QUERY" />
 	</logger>
 -->
-=======
+
 
 
     <logger name="org.hibernate.type" level="INFO">
@@ -48,7 +48,4 @@
     </logger>
 
 
-
-
->>>>>>> Stashed changes
 </configuration>

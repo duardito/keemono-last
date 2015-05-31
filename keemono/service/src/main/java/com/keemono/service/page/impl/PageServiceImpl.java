@@ -2,12 +2,6 @@ package com.keemono.service.page.impl;
 
 import com.keemono.common.converter.dto.page.PageDto;
 import com.keemono.common.converter.dto.page.PageDtoConverter;
-<<<<<<< Updated upstream
-import com.keemono.core.mongo.domain.page.Page;
-import com.keemono.core.mongo.repository.page.IPageRepository;
-=======
-import com.keemono.core.mysql.repository.user.UserRepository;
->>>>>>> Stashed changes
 import com.keemono.service.page.IPageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,13 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class PageServiceImpl implements IPageService {
 
-    @Autowired
-<<<<<<< Updated upstream
-    private IPageRepository pageRepository;
-=======
-    private UserRepository userRepository;
-
->>>>>>> Stashed changes
 
     @Autowired
     private PageDtoConverter pageDtoConverter;
@@ -37,14 +24,8 @@ public class PageServiceImpl implements IPageService {
 
     @Override
     public PageDto createPage(PageDto pageDto){
-<<<<<<< Updated upstream
-        Page page = pageDtoConverter.createFromDto(pageDto);
-        page = pageRepository.save(page);
-        return pageDtoConverter.createDto(page);
-=======
 
         return null;
->>>>>>> Stashed changes
     }
 
 }
