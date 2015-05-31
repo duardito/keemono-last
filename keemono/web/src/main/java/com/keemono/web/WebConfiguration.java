@@ -11,7 +11,7 @@ import org.springframework.context.annotation.*;
  */
 @PropertySources({
                 @PropertySource(value = "classpath:config/mysql.properties"),
-                @PropertySource("classpath:config/mongo.properties"),
+                @PropertySource("classpath:config/solr.properties"),
                 @PropertySource("classpath:config/init.properties")
                 })
 @ComponentScan(basePackages = {"com.keemono.web","com.keemono.common","com.keemono.service"} )

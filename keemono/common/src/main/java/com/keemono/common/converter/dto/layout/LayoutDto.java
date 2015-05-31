@@ -7,8 +7,6 @@ import com.keemono.common.converter.base.AbstractDto;
  */
 public class LayoutDto extends AbstractDto {
 
-    private String schema;
-
     public String getSchema() {
         return schema;
     }
