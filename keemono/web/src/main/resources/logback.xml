@@ -29,9 +29,23 @@
 	<logger name="com.zaxxer.hikari" level="INFO" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
+
 <!--
 	<logger name="org.hibernate.type" level="TRACE">
 		<appender-ref ref="STDOUT-QUERY" />
 	</logger>
 -->
+
+
+
+    <logger name="org.hibernate.type" level="INFO">
+        <appender-ref ref="STDOUT-QUERY" />
+    </logger>
+
+
+    <logger name="org.apache.solr" level="DEBUG">
+        <appender-ref ref="STDOUT-QUERY" />
+    </logger>
+
+
 </configuration>

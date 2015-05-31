@@ -32,7 +32,7 @@ public class LayoutController {
 
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON , consumes = Constants._APPLICATION_JSON)
-    public LayoutResponse createLayout(@RequestBody final LayoutRequest layoutRequest){
+    public LayoutResponse createLayout(@RequestBody final LayoutRequest layoutRequest) throws Exception {
 
         LayoutDto layoutDto = layoutRequestConverter.createFromDto(layoutRequest);
         layoutDto = layoutService.createLayout(layoutDto);

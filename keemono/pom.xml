@@ -15,7 +15,6 @@
         <!--INIT : SPRING DEPENDENCIES -->
         <spring.core.version>4.1.6.RELEASE</spring.core.version>
         <spring.data.jpa.version>1.8.0.RELEASE</spring.data.jpa.version>
-        <spring.data.mongo.version>1.7.0.RELEASE</spring.data.mongo.version>
         <spring.data.solr.version>1.2.0.RELEASE</spring.data.solr.version>
         <spring.session.version>1.0.0.RELEASE</spring.session.version>
         <spring.integration.version>4.1.3.RELEASE</spring.integration.version>
@@ -50,6 +49,11 @@
         <jamon.version>2.80</jamon.version>
         <mysql.driver.version>5.1.35</mysql.driver.version>
         <redis.client.version>2.4.2</redis.client.version>
+        <c3p0.version>0.9.5</c3p0.version>
+        <mchange.commons.java.vesion>0.2.9</mchange.commons.java.vesion>
+        <aspectj.version>1.8.5</aspectj.version>
+        <spring.solr.version>1.4.0.RELEASE</spring.solr.version>
+
     </properties>
 
     <modules>
@@ -64,6 +68,66 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-solr</artifactId>
+                <version>${spring.solr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>1.0</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>1.10.0.RELEASE</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.core.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.cache</groupId>
+                <artifactId>cache-api</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.core.version}</version>
+            </dependency>
+
+		    <dependency>
+              <groupId>org.aspectj</groupId>
+              <artifactId>aspectjweaver</artifactId>
+              <version>${aspectj.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+            <version>3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.core.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>c3p0</artifactId>
+                <version>${c3p0.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mchange</groupId>
+                <artifactId>mchange-commons-java</artifactId>
+                <version>${mchange.commons.java.vesion}</version>
+            </dependency>
+
             <dependency>
                 <groupId>redis.clients</groupId>
                 <artifactId>jedis</artifactId>
@@ -155,11 +219,7 @@
                 <artifactId>spring-data-jpa</artifactId>
                 <version>${spring.data.jpa.version}</version>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-mongodb</artifactId>
-                <version>${spring.data.mongo.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-solr</artifactId>
@@ -198,7 +258,7 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>config/init.properties</include>
-                    <include>config/mongo.properties</include>
+                    <include>config/solr.properties</include>
                     <include>config/mysql.properties</include>
                 </includes>
             </resource>
@@ -267,4 +327,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -12,7 +12,7 @@ public class PropertyLoader {
     public PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
         PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
                 ppc.setLocations(
-                        new ClassPathResource("config/mongo.properties")
+                        new ClassPathResource("config/solr.properties")
                         );
         return ppc;
     }

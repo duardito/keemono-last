@@ -2,13 +2,16 @@ package com.keemono.service.layout.impl;
 
 import com.keemono.common.converter.dto.layout.LayoutDto;
 import com.keemono.common.converter.dto.layout.LayoutDtoConverter;
-import com.keemono.core.mongo.domain.layout.Layout;
-import com.keemono.core.mongo.repository.layout.ILayoutRepository;
+import com.keemono.core.mysql.Repository.user.UserRepository;
+import com.keemono.core.mysql.domain.user.User;
+import com.keemono.core.solr.repository.layout.Layout;
+import com.keemono.core.solr.repository.layout.LayoutSolrRepository;
 import com.keemono.service.layout.ILayoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,26 +21,55 @@ import java.util.List;
 public class LayoutServiceImpl implements ILayoutService {
 
     @Autowired
-    private ILayoutRepository layoutRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private LayoutSolrRepository layoutSolrRepository;
+
 
     @Autowired
     private LayoutDtoConverter layoutDtoConverter;
 
     @Override
-    public LayoutDto createLayout(LayoutDto layoutDto){
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public LayoutDto createLayout(LayoutDto layoutDto) throws Exception {
+
+
         Layout layout = layoutDtoConverter.createFromDto(layoutDto);
-        layout = layoutRepository.save(layout);
+        try {
+            User user = new User();
+            user.setName("edu");
+            //layout.setSchema("pepitoooo");
+           // user.setLayout(layout);
+            userRepository.save(user);
+            layoutSolrRepository.save(layout);
+
+
+          // layout = layoutRepository.save(layout);
+            System.out.println("el layout es: " + layout.getId());
+            //user = null;
+            //userRepository.save(user);
+        }catch (Exception e) {
+
+            throw new Exception();
+        }
+
+
         return layoutDtoConverter.createDto(layout);
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED, readOnly = true)
     public List <LayoutDto> getAllLayoutList(){
-        final List <Layout>lista = layoutRepository.findAll();
-        final List listDto = new ArrayList<>();
+        /*
+        final List <Layout>lista = layoutSolrRepository.findAll();
+        final List <LayoutDto>listDto = new ArrayList<LayoutDto>();
         for(final Layout layout : lista){
             final LayoutDto layoutDto = layoutDtoConverter.createDto(layout);
             listDto.add(layoutDto);
         }
         return listDto;
+        */
+        return  null;
     }
 }
