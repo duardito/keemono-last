@@ -7,6 +7,7 @@ import com.keemono.common.converter.response.page.PageResponse;
 import com.keemono.common.converter.response.page.PageResponseConverter;
 import com.keemono.service.page.IPageService;
 import com.keemono.utils.Constants;
+import com.wordnik.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Created by edu on 25/04/2015.
  */
+@Api(value = "/page", description = "Operations to do about a page")
 @RequestMapping(value = Constants._PAGE_URL)
 @RestController
 public class PageController {

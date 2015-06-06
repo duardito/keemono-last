@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 
@@ -13,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * Created by edu on 18/4/15.
  */
 
-@EnableWebMvc
+//@EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = "com.keemono.integration", useDefaultFilters = false,
         includeFilters = {@ComponentScan.Filter(RestController.class),@ComponentScan.Filter(Controller.class)})
