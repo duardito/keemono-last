@@ -37,7 +37,7 @@ public class SessionFactoryContext {
         dataSource.setJdbcUrl( env.getProperty("mysql.url") );
         dataSource.setUser( env.getProperty("mysql.user"));
         dataSource.setPassword( env.getProperty("mysql.passwd") );
-
+        dataSource.setAutoCommitOnClose(false);
         return dataSource;
     }
 /*
@@ -71,6 +71,7 @@ public class SessionFactoryContext {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         transactionManager.setDataSource(dataSource());
+        transactionManager.afterPropertiesSet();
         return transactionManager;
     }
 

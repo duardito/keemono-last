@@ -24,8 +24,4 @@ public class SolrConfiguration {
         String solrHost = env.getProperty("solr.host");
         return new HttpSolrServer(solrHost);
     }
-
-
-
-
 }

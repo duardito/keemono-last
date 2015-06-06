@@ -21,7 +21,7 @@ import java.util.Properties;
  * Created by edu on 01/05/2015.
  */
 @Configuration
-@EnableJpaRepositories(basePackages = "com.keemono.domain.mysql.repository")
+@EnableJpaRepositories(basePackages = "com.keemono.domain.mysql")
 @ComponentScan(basePackages = { "com.keemono.domain.mysql" })
 @EnableTransactionManagement
 public class PersistenceContext {

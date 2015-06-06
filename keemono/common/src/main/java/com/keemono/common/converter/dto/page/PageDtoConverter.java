@@ -2,7 +2,7 @@ package com.keemono.common.converter.dto.page;
 
 
 import com.keemono.common.converter.base.AbstractDtoConverter;
-import com.keemono.core.solr.repository.layout.Page;
+import com.keemono.core.solr.domain.page.Page;
 import ma.glasnost.orika.CustomMapper;
 import ma.glasnost.orika.MappingContext;
 import ma.glasnost.orika.metadata.ClassMapBuilder;

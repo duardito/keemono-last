@@ -1,4 +1,4 @@
-package com.keemono.core.solr.repository.layout;
+package com.keemono.core.solr.domain.layout;
 
 import org.apache.solr.client.solrj.beans.Field;
 import org.springframework.data.annotation.Id;

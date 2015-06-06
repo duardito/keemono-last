@@ -1,5 +1,6 @@
 package com.keemono.core.solr.repository.layout;
 
+import com.keemono.core.solr.domain.layout.Layout;
 import org.springframework.data.solr.repository.SolrCrudRepository;
 
 /**
