@@ -53,7 +53,8 @@
         <mchange.commons.java.vesion>0.2.9</mchange.commons.java.vesion>
         <aspectj.version>1.8.5</aspectj.version>
         <spring.solr.version>1.4.0.RELEASE</spring.solr.version>
-
+        <swagger.version>1.0.2</swagger.version>
+        <javax.validation.version>1.1.0.Final</javax.validation.version>
     </properties>
 
     <modules>
@@ -68,6 +69,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${javax.validation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mangofactory</groupId>
+                <artifactId>swagger-springmvc</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-solr</artifactId>

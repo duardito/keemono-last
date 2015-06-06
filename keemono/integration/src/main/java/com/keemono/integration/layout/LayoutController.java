@@ -8,15 +8,20 @@ import com.keemono.common.converter.response.layout.LayoutResponseConverter;
 import com.keemono.common.converter.response.layout.ListLayoutResponse;
 import com.keemono.service.layout.ILayoutService;
 import com.keemono.utils.Constants;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
  * Created by edu on 10/05/2015.
  */
+@Api(value = Constants._LAYOUT_URL, description = "Operations to do about a layout")
 @RequestMapping(value = Constants._LAYOUT_URL)
 @RestController
 public class LayoutController {
@@ -30,10 +35,11 @@ public class LayoutController {
     @Autowired
     private ILayoutService layoutService;
 
+    @ApiOperation(value = "create a layout", notes = "create a layout")
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON , consumes = Constants._APPLICATION_JSON)
-    public LayoutResponse createLayout(@RequestBody final LayoutRequest layoutRequest) throws Exception {
-
+    public LayoutResponse createLayout(@ApiParam(
+            value = "basic data to create layout", required = true) @RequestBody @Valid final LayoutRequest layoutRequest) throws Exception {
         LayoutDto layoutDto = layoutRequestConverter.createFromDto(layoutRequest);
         layoutDto = layoutService.createLayout(layoutDto);
         return layoutResponseConverter.createDto(layoutDto);

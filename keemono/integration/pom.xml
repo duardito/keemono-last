@@ -29,6 +29,14 @@
         <artifactId>service</artifactId>
         <version>${keemono.project.version}</version>
     </dependency>
+    <dependency>
+        <groupId>com.mangofactory</groupId>
+        <artifactId>swagger-springmvc</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>javax.validation</groupId>
+        <artifactId>validation-api</artifactId>
+    </dependency>
 </dependencies>
 
 </project>
