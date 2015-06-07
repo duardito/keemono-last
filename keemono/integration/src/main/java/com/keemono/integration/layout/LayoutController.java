@@ -44,7 +44,7 @@ public class LayoutController {
         return layoutResponseConverter.createDto(layoutDto);
     }
 
-
+    @ApiOperation(value = "get a layout", notes = "get a layout")
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping( method = RequestMethod.GET, produces = Constants._APPLICATION_JSON ,consumes = Constants._APPLICATION_JSON)
     public ListLayoutResponse getLayouts(){

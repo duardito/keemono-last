@@ -7,12 +7,10 @@ import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * Created by edu on 06/06/2015.
  */
-@PropertySource("classpath:config/init.properties")
 @Configuration
 @EnableSwagger
 public class SwaggerConfiguration {

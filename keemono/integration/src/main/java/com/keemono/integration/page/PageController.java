@@ -8,6 +8,8 @@ import com.keemono.common.converter.response.page.PageResponseConverter;
 import com.keemono.service.page.IPageService;
 import com.keemono.utils.Constants;
 import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +31,17 @@ public class PageController {
     @Autowired
     private PageRequestConverter pageRequestConverter;
 
+    @ApiOperation(value = "get  a page", notes = "get  a page")
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = Constants._ID, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
-    public PageResponse getPage(@PathVariable String id){
+    public PageResponse getPage(@ApiParam(
+            value = "id of page", required = true) @PathVariable String id){
 
         final PageDto pageDto = pageService.getPageById(id);
         return pageResponseConverter.createDto(pageDto);
     }
 
+    @ApiOperation(value = "create a page", notes = "create a page")
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON)
     public PageResponse createPage(@RequestBody PageRequest pageRequest ){
