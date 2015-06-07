@@ -31,7 +31,7 @@ public class PageController {
     @Autowired
     private PageRequestConverter pageRequestConverter;
 
-    @ApiOperation(value = "get  a page", notes = "get  a page")
+    @ApiOperation(value = "get  a page", notes = "get  a page", response = PageResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = Constants._ID, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
     public PageResponse getPage(@ApiParam(
@@ -41,7 +41,7 @@ public class PageController {
         return pageResponseConverter.createDto(pageDto);
     }
 
-    @ApiOperation(value = "create a page", notes = "create a page")
+    @ApiOperation(value = "create a page", notes = "create a page", response = PageResponse.class)
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON)
     public PageResponse createPage(@RequestBody PageRequest pageRequest ){

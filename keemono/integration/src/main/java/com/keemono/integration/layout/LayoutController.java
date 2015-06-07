@@ -34,7 +34,7 @@ public class LayoutController {
     @Autowired
     private ILayoutService layoutService;
 
-    @ApiOperation(value = "create a layout", notes = "create a layout")
+    @ApiOperation(value = "create a layout", notes = "create a layout", response = LayoutResponse.class)
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON , consumes = Constants._APPLICATION_JSON)
     public LayoutResponse createLayout(@ApiParam(
@@ -44,9 +44,9 @@ public class LayoutController {
         return layoutResponseConverter.createDto(layoutDto);
     }
 
-    @ApiOperation(value = "get a layout", notes = "get a layout")
+    @ApiOperation(value = "get a layout", notes = "get a layout",response =ListLayoutResponse.class )
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping( method = RequestMethod.GET, produces = Constants._APPLICATION_JSON ,consumes = Constants._APPLICATION_JSON)
+    @RequestMapping( method = RequestMethod.GET, produces = Constants._APPLICATION_JSON )
     public ListLayoutResponse getLayouts(){
 
         final List <LayoutDto> lista = layoutService.getAllLayoutList();
