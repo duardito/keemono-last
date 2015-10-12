@@ -1,9 +1,7 @@
 package com.keemono.service.page.impl;
 
 import com.keemono.common.converter.dto.page.PageDto;
-import com.keemono.common.converter.dto.page.PageDtoConverter;
 import com.keemono.service.page.IPageService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,10 +10,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PageServiceImpl implements IPageService {
-
-
-    @Autowired
-    private PageDtoConverter pageDtoConverter;
+    
 
     @Override
     public PageDto getPageById(String id){
