@@ -17,7 +17,8 @@ import java.util.Map;
  * Created by edu on 11/10/2015.
  */
 @Component
-public class CustomMapper extends ConfigurableMapper implements ApplicationContextAware {
+public class CustomMapper extends ConfigurableMapper implements ApplicationContextAware
+{
 
 
     public CustomMapper(){
@@ -25,13 +26,17 @@ public class CustomMapper extends ConfigurableMapper implements ApplicationConte
     }
 
     private MapperFactory factory;
+
+
     private ApplicationContext applicationContext;
+
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.applicationContext = applicationContext;
         init();
     }
+
 
     @Override
     protected void configure(MapperFactory factory) {
