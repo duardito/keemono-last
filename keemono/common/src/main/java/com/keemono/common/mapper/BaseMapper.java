@@ -11,4 +11,5 @@ public class BaseMapper {
     @Autowired
     protected CustomMapper mapper;
 
+
 }
