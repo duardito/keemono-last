@@ -12,10 +12,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.naming.NamingException;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
-import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 /**
@@ -30,7 +28,7 @@ public class SessionFactoryContext {
     private Environment env;
 
     @Bean(destroyMethod = "close")
-    public DataSource dataSource() throws PropertyVetoException, NamingException {
+    public DataSource dataSource() throws Exception {
 
         final ComboPooledDataSource dataSource = new ComboPooledDataSource();
         dataSource.setDriverClass( env.getProperty("mysql.driver") );
@@ -40,20 +38,9 @@ public class SessionFactoryContext {
         dataSource.setAutoCommitOnClose(false);
         return dataSource;
     }
-/*
+
     @Bean
-    public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
-        LocalSessionFactoryBean sfb = new LocalSessionFactoryBean();
-        sfb.setDataSource(dataSource);
-        sfb.setPackagesToScan(new String[] { "com.keemono.core.mysql" });
-        Properties props = new Properties();
-        props.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        sfb.setHibernateProperties(props);
-        return sfb;
-    }
-*/
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException, NamingException {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws Exception {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource( dataSource());
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
@@ -67,7 +54,7 @@ public class SessionFactoryContext {
     }
 
     @Bean
-    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) throws PropertyVetoException, NamingException {
+    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) throws Exception {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         transactionManager.setDataSource(dataSource());
