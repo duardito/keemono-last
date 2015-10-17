@@ -11,7 +11,6 @@
 
     <properties>
         <keemono.project.version>1.0-SNAPSHOT</keemono.project.version>
-
         <!--INIT : SPRING DEPENDENCIES -->
         <spring.core.version>4.2.1.RELEASE</spring.core.version>
         <spring.data.jpa.version>1.8.0.RELEASE</spring.data.jpa.version>
