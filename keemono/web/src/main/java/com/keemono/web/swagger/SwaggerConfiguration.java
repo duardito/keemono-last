@@ -15,12 +15,10 @@ import org.springframework.context.annotation.Configuration;
 @EnableSwagger
 public class SwaggerConfiguration {
 
+    @Autowired
     private SpringSwaggerConfig springSwaggerConfig;
 
-    @Autowired
-    public void setSpringSwaggerConfig(SpringSwaggerConfig springSwaggerConfig) {
-        this.springSwaggerConfig = springSwaggerConfig;
-    }
+
 
     @Bean
     public SwaggerSpringMvcPlugin customImplementation() {
