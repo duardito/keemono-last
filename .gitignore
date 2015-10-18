@@ -1,0 +1,10 @@
+*.prefs
+*.idea
+artifacts
+libraries
+*.classpath
+*.jar
+target
+*.iml
+.settings
+*.project

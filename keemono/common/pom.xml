@@ -12,8 +12,13 @@
     <artifactId>common</artifactId>
     <dependencies>
         <dependency>
+        <groupId>org.com.keemono</groupId>
+        <artifactId>core</artifactId>
+        <version>${keemono.project.version}</version>
+    </dependency>
+        <dependency>
             <groupId>org.com.keemono</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>persistence</artifactId>
             <version>${keemono.project.version}</version>
         </dependency>
 
