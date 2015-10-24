@@ -27,7 +27,6 @@ public class SessionFactoryContext {
     @Autowired
     private Environment env;
 
-
     @Bean(destroyMethod = "close")
     public DataSource dataSource() throws Exception {
 
@@ -51,6 +50,7 @@ public class SessionFactoryContext {
 
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+        jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
         entityManagerFactoryBean.afterPropertiesSet();
         return entityManagerFactoryBean;
