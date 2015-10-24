@@ -47,10 +47,8 @@ public class SessionFactoryContext {
         entityManagerFactoryBean.setDataSource( dataSource());
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         entityManagerFactoryBean.setPackagesToScan("com.keemono.core.mysql");
-
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
         entityManagerFactoryBean.afterPropertiesSet();
         return entityManagerFactoryBean;
