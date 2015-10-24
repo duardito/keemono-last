@@ -16,7 +16,7 @@ import java.util.List;
 /**
  * Created by edu on 17/10/2015.
  */
-public class GetBasicLayoutsITCase extends AbstractBaseITCase {
+public class GetBasicLayoutsTest extends AbstractBaseITCase {
 
     @Autowired
     private ILayoutService layoutService;
