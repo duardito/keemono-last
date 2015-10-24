@@ -3,7 +3,6 @@ package com.keemono.configuration;
 
 import com.keemono.configuration.mysql.SessionFactoryContext;
 import com.keemono.configuration.solr.SolrConfiguration;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 

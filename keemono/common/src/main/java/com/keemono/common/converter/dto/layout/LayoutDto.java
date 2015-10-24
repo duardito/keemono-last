@@ -16,4 +16,11 @@ public class LayoutDto extends AbstractDto {
     public void setSchema(String schema) {
         this.schema = schema;
     }
+
+    @Override
+    public String toString() {
+        return "LayoutDto{" +
+                "schema='" + schema + '\'' +
+                '}';
+    }
 }

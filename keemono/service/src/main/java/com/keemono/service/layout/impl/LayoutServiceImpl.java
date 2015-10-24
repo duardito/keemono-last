@@ -95,23 +95,7 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
             LayoutDto layoutDto = mapper.map(layout, LayoutDto.class);
             listOut.add(layoutDto);
         }
-       /*
-        List <LayoutDto>lista = new ArrayList<>();
-        LayoutDto layout = new LayoutDto();
-        layout.setSchema("test");
-        lista.add(layout);
-        layout = new LayoutDto();
-        layout.setSchema("test 2");
-        lista.add(layout);
 
-        final List <Layout>lista = layoutSolrRepository.findAll();
-        final List <LayoutDto>listDto = new ArrayList<LayoutDto>();
-        for(final Layout layout : lista){
-            final LayoutDto layoutDto = layoutDtoConverter.createDto(layout);
-            listDto.add(layoutDto);
-        }
-        return listDto;
-        */
         return  listOut;
     }
 }
