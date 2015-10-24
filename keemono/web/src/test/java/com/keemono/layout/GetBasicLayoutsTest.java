@@ -25,18 +25,9 @@ public class GetBasicLayoutsTest extends AbstractBaseITCase {
     public void delete(){}
 
     @Test
-    @DatabaseSetup(value = "classpath:dataset/sampleData.xml",type = DatabaseOperation.INSERT)
+    @DatabaseSetup(value = "classpath:dataset/sampleData.xml",type = DatabaseOperation.CLEAN_INSERT)
     @ExpectedDatabase("classpath:dataset/expectedData.xml")
     public void initTest() {
-        List<LayoutDto> lista = layoutService.getAllLayoutList();
-        lista.stream().forEach(p -> System.out.printf("el dto es :" + p));
-        Assert.assertEquals(3, lista.size());
-    }
-
-    @Test
-    @DatabaseSetup(value = "classpath:dataset/sampleData.xml",type = DatabaseOperation.INSERT)
-    @ExpectedDatabase("classpath:dataset/expectedData.xml")
-    public void initTest2() {
         List<LayoutDto> lista = layoutService.getAllLayoutList();
         lista.stream().forEach(p -> System.out.printf("el dto es :" + p));
         Assert.assertEquals(3, lista.size());

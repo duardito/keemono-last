@@ -3,5 +3,5 @@
     <layout id="1" name="test1"/>
     <layout id="2" name="test2"/>
     <layout id="3" name="test3"/>
-    <user id="1" name="edu"/>
+    <user/>
 </dataset>

@@ -1,7 +1,6 @@
 package com.keemono.base;
 
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 import com.github.springtestdbunit.bean.DatabaseConfigBean;
 import com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean;
 import com.keemono.web.WebConfiguration;
@@ -26,7 +25,7 @@ import javax.sql.DataSource;
  * Created by edu on 17/10/2015.
  */
 @Transactional
-@DbUnitConfiguration(databaseConnection={"dataSource"})
+//@DbUnitConfiguration(databaseConnection={"dataSource"})
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
