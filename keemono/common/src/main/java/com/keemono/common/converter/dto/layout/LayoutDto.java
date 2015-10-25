@@ -7,20 +7,14 @@ import com.keemono.common.converter.base.AbstractDto;
  */
 public class LayoutDto extends AbstractDto {
 
-    private String schema;
+    private String values;
 
-    public String getSchema() {
-        return schema;
+    public String getValues() {
+        return values;
     }
 
-    public void setSchema(String schema) {
-        this.schema = schema;
+    public void setValues(String values) {
+        this.values = values;
     }
 
-    @Override
-    public String toString() {
-        return "LayoutDto{" +
-                "schema='" + schema + '\'' +
-                '}';
-    }
 }

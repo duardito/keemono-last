@@ -13,7 +13,7 @@ public abstract class AbstractDomain implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name",nullable = false,length = 255)
     private String name;
 
     public Long getId() {

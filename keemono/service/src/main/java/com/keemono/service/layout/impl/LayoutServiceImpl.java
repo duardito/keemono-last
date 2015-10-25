@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,22 +31,20 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
 
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = true)
+    @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
     public LayoutDto createLayout(LayoutDto layoutDto) throws Exception {
-        System.out.println("la transaction 1: "+ TransactionSynchronizationManager.isCurrentTransactionReadOnly());
+        //System.out.println("la transaction 1: "+ TransactionSynchronizationManager.isCurrentTransactionReadOnly());
 
-        //Layout layout = layoutDtoConverter.createFromDto(layoutDto);
-        Layout layout = null;
-        createLayoutMod(layoutDto);
+        Layout layout = mapper.map(layoutDto,Layout.class);
         try {
             User user = new User();
             user.setName("edu");
             //layout.setSchema("pepitoooo");
            // user.setLayout(layout);
-            userRepository.save(user);
+            //userRepository.save(user);
 
 
-          // layout = layoutRepository.save(layout);
+          layout = layoutRepository.save(layout);
             System.out.println("el layout es: " + layout.getId());
             //user = null;
             //userRepository.save(user);
@@ -55,35 +52,10 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
 
             throw new Exception(e);
         }
-        return null;
+        return mapper.map(layout,LayoutDto.class);
         //return layoutDtoConverter.createDto(layout);
     }
 
-
-    @Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = Exception.class, readOnly = false)
-    public LayoutDto createLayoutMod(LayoutDto layoutDto) throws Exception {
-
-       // Layout layout = layoutDtoConverter.createFromDto(layoutDto);
-        Layout layout =null;
-        try {
-            User user = new User();
-            user.setName("edu");
-            //layout.setSchema("pepitoooo");
-            // user.setLayout(layout);
-            userRepository.save(user);
-
-
-            // layout = layoutRepository.save(layout);
-            System.out.println("el layout es: " + layout.getId());
-            //user = null;
-            //userRepository.save(user);
-        }catch (Exception e) {
-
-            throw new Exception(e);
-        }
-        return null;
-       // return layoutDtoConverter.createDto(layout);
-    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, readOnly = true)

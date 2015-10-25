@@ -50,7 +50,7 @@ public class SessionFactoryContext {
 
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        jpaProperties.setProperty("hibernate.naming-strategy","org.hibernate.cfg.DefaultNamingStrategy");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
         entityManagerFactoryBean.afterPropertiesSet();
         return entityManagerFactoryBean;
