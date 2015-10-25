@@ -5,6 +5,7 @@ import com.github.springtestdbunit.bean.DatabaseConfigBean;
 import com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean;
 import com.keemono.web.WebConfiguration;
 import org.dbunit.ext.mysql.MySqlDataTypeFactory;
+import org.dbunit.ext.mysql.MySqlMetadataHandler;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,7 @@ public abstract class AbstractBaseITCase {
     public DatabaseConfigBean databaseConfigBean(){
         DatabaseConfigBean databaseConfigBean = new DatabaseConfigBean();
         databaseConfigBean.setCaseSensitiveTableNames(true);
+        databaseConfigBean.setMetadataHandler(new MySqlMetadataHandler());
         databaseConfigBean.setDatatypeFactory(new MySqlDataTypeFactory());
         return databaseConfigBean;
     }
