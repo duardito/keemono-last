@@ -12,7 +12,6 @@ import com.keemono.utils.Constants;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,8 +37,7 @@ public class LayoutController extends BaseMapper {
     public LayoutResponse createLayout(@ApiParam(
             value = "basic data to create layout", required = true) @RequestBody  @Valid final LayoutRequest layoutRequest) throws Exception {
 
-        LayoutDto layoutDto = new LayoutDto();
-        BeanUtils.copyProperties(layoutRequest,layoutDto);
+        LayoutDto layoutDto = mapper.map(layoutRequest,LayoutDto.class);
 
         layoutDto = layoutService.createLayout(layoutDto);
 
@@ -53,12 +51,11 @@ public class LayoutController extends BaseMapper {
 
 
         final List <LayoutDto> lista = layoutService.getAllLayoutList();
-        final ListLayoutResponse listLayoutResponse = new ListLayoutResponse();
 
-        for(final LayoutDto layoutDto : lista){
-            final LayoutResponse layoutResponse = mapper.map(layoutDto,LayoutResponse.class);
-            listLayoutResponse.add(layoutResponse);
-        }
+        final ListLayoutResponse listLayoutResponse = new ListLayoutResponse();
+        List<LayoutResponse> out = mapper.mapAsList(lista, LayoutResponse.class);
+        listLayoutResponse.addAll(out);
+
         return listLayoutResponse;
     }
 }

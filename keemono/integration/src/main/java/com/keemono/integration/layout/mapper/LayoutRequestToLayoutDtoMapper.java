@@ -1,7 +1,7 @@
 package com.keemono.integration.layout.mapper;
 
 import com.keemono.common.converter.dto.layout.LayoutDto;
-import com.keemono.common.converter.response.layout.LayoutResponse;
+import com.keemono.common.converter.request.layout.LayoutRequest;
 import com.keemono.common.mapper.CustomBaseMapper;
 import org.springframework.stereotype.Component;
 
@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
  * Created by edu on 11/10/2015.
  */
 @Component
-public class LayoutCustomMapper extends CustomBaseMapper<LayoutDto, LayoutResponse> {
+public class LayoutRequestToLayoutDtoMapper extends CustomBaseMapper<LayoutRequest, LayoutDto> {
 
-    public LayoutCustomMapper(){
+    public LayoutRequestToLayoutDtoMapper(){
         super();
         addField("values", "values");
         addField("name", "name");
