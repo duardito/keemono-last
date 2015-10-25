@@ -11,13 +11,23 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 public class LayoutResponse extends AbstractResponse {
 
     @ApiModelProperty(value = "schema layout", required = true)
-    private String pepe;
+    private String name;
 
-    public String getPepe() {
-        return pepe;
+    private String values;
+
+    public String getValues() {
+        return values;
     }
 
-    public void setPepe(String pepe) {
-        this.pepe = pepe;
+    public void setValues(String values) {
+        this.values = values;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

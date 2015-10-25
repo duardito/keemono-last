@@ -1,4 +1,4 @@
-package com.keemono.integration;
+package com.keemono.integration.layout.mapper;
 
 import com.keemono.common.converter.dto.layout.LayoutDto;
 import com.keemono.common.converter.response.layout.LayoutResponse;
@@ -13,7 +13,8 @@ public class LayoutCustomMapper extends CustomBaseMapper<LayoutDto, LayoutRespon
 
     public LayoutCustomMapper(){
         super();
-        addField("schema", "pepe");
+        addField("values", "values");
+        addField("name", "name");
     }
 
 }

@@ -5,7 +5,9 @@ import com.github.springtestdbunit.bean.DatabaseConfigBean;
 import com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean;
 import com.keemono.web.WebConfiguration;
 import org.dbunit.ext.mysql.MySqlDataTypeFactory;
+import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +19,10 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.sql.DataSource;
 
@@ -37,6 +42,24 @@ import javax.sql.DataSource;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {WebConfiguration.class})
 public abstract class AbstractBaseITCase {
+
+    protected MockMvc mockMvc;
+
+    @Autowired
+    private WebApplicationContext webApplicationContext;
+
+    @Before
+    public void setup() throws Exception {
+
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.webApplicationContext).build();
+
+       //databaseConnection = new DatabaseConnection(datasource.getConnection());
+
+    }
+
+    public MockMvc getMockMvc() {
+        return mockMvc;
+    }
 
     @Bean
     public DatabaseConfigBean databaseConfigBean(){

@@ -11,5 +11,14 @@ import javax.persistence.*;
 @Table(name = "layout")
 public class Layout extends AbstractDomain {
 
+    @Column(name = "valores", nullable = false,length = 2000)
+    private String values;
 
+    public String getValues() {
+        return values;
+    }
+
+    public void setValues(String values) {
+        this.values = values;
+    }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <layout  name="test1" valores="&lt;div1/&gt;"/>
+    <layout  name="test2" valores="div1"/>
+    <layout  name="test3" valores="div1"/>
+    <user/>
+</dataset>
