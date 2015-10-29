@@ -1,5 +1,6 @@
-package com.keemono.integration.layout;
+package com.keemono.web.integration.layout;
 
+import com.keemono.common.Constants;
 import com.keemono.common.converter.dto.layout.LayoutDto;
 import com.keemono.common.converter.request.layout.LayoutRequest;
 import com.keemono.common.converter.response.layout.LayoutResponse;
@@ -8,7 +9,6 @@ import com.keemono.common.mapper.BaseMapper;
 import com.keemono.common.ordination.OrdinationRequest;
 import com.keemono.common.pagination.PaginationRequest;
 import com.keemono.service.layout.ILayoutService;
-import com.keemono.utils.Constants;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;

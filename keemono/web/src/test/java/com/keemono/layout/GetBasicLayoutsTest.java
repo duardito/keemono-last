@@ -5,7 +5,7 @@ import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 import com.keemono.base.AbstractBaseITCase;
-import com.keemono.utils.Constants;
+import com.keemono.common.Constants;
 import org.junit.After;
 import org.junit.Test;
 import org.springframework.http.MediaType;

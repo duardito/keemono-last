@@ -1,4 +1,4 @@
-package com.keemono.integration.layout.mapper;
+package com.keemono.web.integration.layout.mapper;
 
 import com.keemono.common.converter.dto.layout.LayoutDto;
 import com.keemono.common.converter.response.layout.LayoutResponse;
