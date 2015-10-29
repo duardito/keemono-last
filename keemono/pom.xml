@@ -11,19 +11,6 @@
 
     <properties>
 
-        <coverage.reports.dir>
-            ${basedir}/target/coverage-reports
-        </coverage.reports.dir>
-        <sonar.jacoco.reportPath>
-            ${coverage.reports.dir}/jacoco-unit.exec
-        </sonar.jacoco.reportPath>
-        <sonar.jacoco.itReportPath>
-            ${coverage.reports.dir}/jacoco-it.exec
-        </sonar.jacoco.itReportPath>
-        <sonar.jacoco.jar>
-            ${basedir}/lib/jacocoagent.jar
-        </sonar.jacoco.jar>
-
         <keemono.project.version>1.0-SNAPSHOT</keemono.project.version>
         <!--INIT : SPRING DEPENDENCIES -->
         <spring.core.version>4.2.1.RELEASE</spring.core.version>
@@ -70,7 +57,11 @@
         <swagger.ui.version>0.4</swagger.ui.version>
         <javax.validation.version>1.1.0.Final</javax.validation.version>
 
-        <sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>  <!-- Ensure you run mvn install before sonar:sonar -->
+        <sonar.java.codeCoveragePlugin>jacoco</sonar.java.codeCoveragePlugin>
+        <sonar.surefire.reportsPath>/target/surefire-reports</sonar.surefire.reportsPath>
+        <sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>    <!-- This is the default, put here to be explicit -->
+        <sonar.jacoco.itReportPath>target/jacoco-it.exec</sonar.jacoco.itReportPath>
 
     </properties>
 
@@ -161,15 +152,15 @@
                 <version>${spring.core.version}</version>
             </dependency>
 
-		    <dependency>
-              <groupId>org.aspectj</groupId>
-              <artifactId>aspectjweaver</artifactId>
-              <version>${aspectj.version}</version>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.version}</version>
             </dependency>
             <dependency>
                 <groupId>cglib</groupId>
                 <artifactId>cglib</artifactId>
-            <version>3.1</version>
+                <version>3.1</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -346,7 +337,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>2.5</version>
+                <version>2.3</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
@@ -358,7 +349,7 @@
                     <systemProperties>
                         <property>
                             <name>logback.configurationFile</name> -->
-                        <value>src/main/resources/logback.xml</value>
+                            <value>src/main/resources/logback.xml</value>
                         </property>
                     </systemProperties>
                 </configuration>
@@ -375,7 +366,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
+                <version>2.5</version>
                 <configuration>
                     <warName>keemono</warName>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -482,69 +473,22 @@
         </plugins>
     </build>
 
-<profiles>
-    <profile>
-        <id>sonar-coverage</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
-        <build>
-            <pluginManagement>
-                <plugins>
-                    <plugin>
-                        <groupId>org.jacoco</groupId>
-                        <artifactId>jacoco-maven-plugin</artifactId>
-                        <version>0.7.4.201502262128</version>
-                    </plugin>
-                </plugins>
-            </pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.jacoco</groupId>
-                    <artifactId>jacoco-maven-plugin</artifactId>
-                    <configuration>
-                        <append>true</append>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <id>agent-for-ut</id>
-                            <goals>
-                                <goal>prepare-agent</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>agent-for-it</id>
-                            <goals>
-                                <goal>prepare-agent-integration</goal>
-                            </goals>
-                        </execution>
-                        <execution>
-                            <id>jacoco-site</id>
-                            <phase>verify</phase>
-                            <goals>
-                                <goal>report</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
-            </plugins>
-        </build>
-    </profile>
-    <profile>
-        <id>sonar</id>
-        <activation>
-            <activeByDefault>true</activeByDefault>
-        </activation>
-        <properties>
-            <sonar.jdbc.url>jdbc:mysql://keemono.com:3306/sonar</sonar.jdbc.url>
-            <sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
-            <sonar.jdbc.username>sonar</sonar.jdbc.username>
-            <sonar.jdbc.password>sonar</sonar.jdbc.password>
-            <!-- SERVER ON A REMOTE HOST -->
-            <sonar.host.url>http://keemono.com:9000</sonar.host.url>
-        </properties>
-    </profile>
-</profiles>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.jdbc.url>jdbc:mysql://keemono.com:3306/sonar</sonar.jdbc.url>
+                <sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+                <sonar.jdbc.username>sonar</sonar.jdbc.username>
+                <sonar.jdbc.password>sonar</sonar.jdbc.password>
+                <!-- SERVER ON A REMOTE HOST -->
+                <sonar.host.url>http://keemono.com:9000</sonar.host.url>
+            </properties>
+        </profile>
+    </profiles>
     <repositories>
         <repository>
             <id>oss-jfrog-artifactory</id>
