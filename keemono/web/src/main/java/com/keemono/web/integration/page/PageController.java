@@ -1,10 +1,10 @@
-package com.keemono.integration.page;
+package com.keemono.web.integration.page;
 
+import com.keemono.common.Constants;
 import com.keemono.common.converter.dto.page.PageDto;
 import com.keemono.common.converter.request.page.PageRequest;
 import com.keemono.common.converter.response.page.PageResponse;
 import com.keemono.service.page.IPageService;
-import com.keemono.utils.Constants;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;

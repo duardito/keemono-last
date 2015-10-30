@@ -1,7 +1,7 @@
-package com.keemono.utils;
+package com.keemono.common;
 
 /**
- * Created by edu on 01/05/2015.
+ * Created by edu on 29/10/2015.
  */
 public final class Constants {
 
