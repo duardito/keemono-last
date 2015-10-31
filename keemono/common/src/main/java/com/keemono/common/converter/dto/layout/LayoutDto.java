@@ -13,7 +13,6 @@ public class LayoutDto extends AbstractDto {
 
     private String schema;
 
-
     private Long userId;
 
     public String getUuid() {

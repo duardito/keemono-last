@@ -8,7 +8,6 @@ public class LayoutRequest extends AbstractRequest {
 
     private String name;
     private String schema;
-    private Long userId;
 
     public String getName() {
         return name;
@@ -27,11 +26,4 @@ public class LayoutRequest extends AbstractRequest {
         this.schema = schema;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
 }
