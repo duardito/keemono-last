@@ -13,6 +13,7 @@ import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
@@ -23,7 +24,7 @@ public class GetBasicLayoutsTest extends AbstractBaseITCase {
     private static final String EXPECTED_CREATED_LAYOUT_DATASET = "dataset/layout/created-layout-expected.xml";
     private static final String INIT_LAYOUT_DATASET = "dataset/layout/basic-layout.xml";
     private static final String INIT_LAYOUT_EXPECTED_DATASET = "dataset/layout/basic-layout-expected.xml";
-
+    private static final String EXPECTED_UPDATED_LAYOUT_DATASET = "dataset/layout/updated-layout-expected.xml";
 
     @Test
     public void getAllLayouts() throws Exception {
@@ -49,6 +50,21 @@ public class GetBasicLayoutsTest extends AbstractBaseITCase {
                 .andExpect(status().isCreated()).andReturn();
 
         assertDatasetWithNulls(EXPECTED_CREATED_LAYOUT_DATASET, generateBeanValidator());
+    }
+
+    @Test
+    public void updateLayout() throws Exception {
+        new SimpleDatasetWithOperation(INIT_LAYOUT_DATASET, DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
+
+        //<layout  name="test3" data="div1" uuid="5695b78b-7218-4e53-897b-51d29c250933" />
+
+        String layoutReq="{\"name\":\"test3\",\"schema\":\"divupdated\"}";
+
+        getMockMvc().perform(
+                put(Constants._LAYOUT_URL, "5695b78b-7218-4e53-897b-51d29c250933").contentType(MediaType.APPLICATION_JSON).content(layoutReq))
+                .andExpect(status().isCreated()).andReturn();
+
+        assertDatasetWithNulls(EXPECTED_UPDATED_LAYOUT_DATASET, generateBeanValidator());
     }
 
     private List<AbstractTableValidatorBean> generateBeanValidator() {

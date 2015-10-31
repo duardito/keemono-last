@@ -27,27 +27,39 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
     @Autowired
     private LayoutRepository layoutRepository;
 
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
+    public LayoutDto updateLayout(LayoutDto layoutDto){
 
+        Layout lay = layoutRepository.findByUUID(layoutDto.getUuid());
 
+        Layout layout = mapper.map(layoutDto,Layout.class);
+        lay.setSchema(layout.getSchema());
+
+        lay =layoutRepository.update(lay);
+        return mapper.map(lay,LayoutDto.class);
+    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
     public LayoutDto createLayout(LayoutDto layoutDto) throws Exception {
-        //System.out.println("la transaction 1: "+ TransactionSynchronizationManager.isCurrentTransactionReadOnly());
-        User user = userRepository.findOne(layoutDto.getUserId());
 
         Layout layout = mapper.map(layoutDto,Layout.class);
-        layout.setCreator(user);
+
+        //FIXME: quitar esta validacion cuando ya estemos pasando el usuario logeado
+        if(layoutDto.getUserId() !=null){
+            User user = userRepository.findOne(layoutDto.getUserId());
+            if(user !=null){
+                layout.setCreator(user);
+            }
+        }
         try {
 
           layout = layoutRepository.save(layout);
-
         }catch (Exception e) {
-
             throw new Exception(e);
         }
         return mapper.map(layout,LayoutDto.class);
-        //return layoutDtoConverter.createDto(layout);
     }
 
 
