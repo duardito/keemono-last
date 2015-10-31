@@ -13,14 +13,14 @@ public class LayoutResponse extends AbstractResponse {
     @ApiModelProperty(value = "schema layout", required = true)
     private String name;
 
-    private String values;
+    private String schema;
 
-    public String getValues() {
-        return values;
+    public String getSchema() {
+        return schema;
     }
 
-    public void setValues(String values) {
-        this.values = values;
+    public void setSchema(String schema) {
+        this.schema = schema;
     }
 
     public String getName() {

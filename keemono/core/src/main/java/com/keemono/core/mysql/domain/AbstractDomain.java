@@ -2,6 +2,7 @@ package com.keemono.core.mysql.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * Created by edu on 31/05/2015.
@@ -15,6 +16,9 @@ public abstract class AbstractDomain implements Serializable {
 
     @Column(name = "name",nullable = false,length = 255)
     private String name;
+
+    @Column(name = "uuid", nullable = false,length = 36)
+    private String uuid;
 
     public Long getId() {
         return id;
@@ -30,5 +34,13 @@ public abstract class AbstractDomain implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUuid() {
+        return UUID.randomUUID().toString();
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }

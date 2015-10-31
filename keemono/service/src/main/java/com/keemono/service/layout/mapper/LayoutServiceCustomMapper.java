@@ -13,6 +13,6 @@ public class LayoutServiceCustomMapper extends CustomBaseMapper<Layout, LayoutDt
 
     public LayoutServiceCustomMapper(){
         super();
-        addField("name", "name");
+        addField("schema", "schema");
     }
 }

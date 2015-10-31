@@ -34,20 +34,14 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
     public LayoutDto createLayout(LayoutDto layoutDto) throws Exception {
         //System.out.println("la transaction 1: "+ TransactionSynchronizationManager.isCurrentTransactionReadOnly());
+        User user = userRepository.findOne(layoutDto.getUserId());
 
         Layout layout = mapper.map(layoutDto,Layout.class);
+        layout.setCreator(user);
         try {
-            User user = new User();
-            user.setName("edu");
-            //layout.setSchema("pepitoooo");
-           // user.setLayout(layout);
-            //userRepository.save(user);
-
 
           layout = layoutRepository.save(layout);
-            System.out.println("el layout es: " + layout.getId());
-            //user = null;
-            //userRepository.save(user);
+
         }catch (Exception e) {
 
             throw new Exception(e);
