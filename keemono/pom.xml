@@ -309,12 +309,7 @@
                 <artifactId>spring-test-dbunit</artifactId>
                 <version>1.2.1</version>
             </dependency>
-            <dependency>
-                <groupId>org.hibernate</groupId>
-                <artifactId>hibernate-jpamodelgen</artifactId>
-                <version>4.3.9.Final</version>
-                <scope>provided</scope>
-            </dependency>
+
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-core</artifactId>
@@ -474,7 +469,36 @@
                     </execution>
                 </executions>
             </plugin>
-           
+            <!--
+            <plugin>
+                <groupId>org.bsc.maven</groupId>
+                <artifactId>maven-processor-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>process</id>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <outputDirectory>src/main/java/</outputDirectory>
+                            <processors>
+                                <processor>
+                                    org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor
+                                </processor>
+                            </processors>
+                        </configuration>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-jpamodelgen</artifactId>
+                        <version>5.0.0.Beta1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+-->
         </plugins>
     </build>
 

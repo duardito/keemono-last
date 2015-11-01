@@ -2,6 +2,7 @@ package com.keemono.core.mysql.Repository.layout;
 
 import com.keemono.core.mysql.Repository.BaseRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
+import com.keemono.core.mysql.domain.layout.Layout_;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -37,7 +38,7 @@ public class LayoutRepositoryImpl extends BaseRepository implements LayoutReposi
     @Override
     public Layout findUUID(String uuid) {
         Criteria criteria = getSession().createCriteria(Layout.class);
-        criteria.add(Restrictions.eq("uuid",uuid));
+        criteria.add(Restrictions.eq(Layout_.uuid.getName() ,uuid));
         Layout layout = (Layout) criteria.uniqueResult();
         return layout;
 
