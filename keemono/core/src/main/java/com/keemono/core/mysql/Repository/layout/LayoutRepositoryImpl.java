@@ -22,7 +22,7 @@ public class LayoutRepositoryImpl extends BaseRepository implements LayoutReposi
 
     @Override
     public Layout update(Layout layout){
-         getSession().update(layout);
+        getSession().update(layout);
         getSession().flush();
         return layout;
     }
@@ -36,29 +36,11 @@ public class LayoutRepositoryImpl extends BaseRepository implements LayoutReposi
 
     @Override
     public Layout findUUID(String uuid) {
-
         Criteria criteria = getSession().createCriteria(Layout.class);
         criteria.add(Restrictions.eq("uuid",uuid));
         Layout layout = (Layout) criteria.uniqueResult();
         return layout;
-        /*
-        CriteriaBuilder builder = getSession().getCriteriaBuilder();
-        CriteriaQuery<Layout> criteria = builder.createQuery(Layout.class);
-        Root<Layout> root = criteria.from(Layout.class);
-        criteria.select(root);
-        criteria.where(builder.equal(root.get("uuid"),uuid));
-        TypedQuery<Layout> query = entityManager.createQuery(criteria);
 
-        List<Layout> queryResult = query.getResultList();
-
-        Layout returnObject = null;
-
-        if (CollectionUtils.isNotEmpty(queryResult)){
-            returnObject = queryResult.get(0);
-        }
-
-        return returnObject;
-        */
     }
 
 }

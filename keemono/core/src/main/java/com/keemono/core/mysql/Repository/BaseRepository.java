@@ -1,5 +1,6 @@
 package com.keemono.core.mysql.Repository;
 
+import org.hibernate.FlushMode;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ public class BaseRepository {
 
     protected Session getSession(){
         final Session session = entityManager.unwrap(Session.class);
+        session.setFlushMode(FlushMode.COMMIT);
         return session;
     }
 

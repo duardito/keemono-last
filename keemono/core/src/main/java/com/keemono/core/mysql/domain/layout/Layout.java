@@ -12,6 +12,16 @@ import javax.persistence.*;
 @Table(name = "layout")
 public class Layout extends AbstractDomain {
 
+
+    public Layout(){
+        super();
+
+        if(this.uuid == null){
+            this.uuid = getUuid();
+        }
+
+    }
+
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     @OneToOne(fetch = FetchType.LAZY)
     private User creator;
@@ -36,4 +46,11 @@ public class Layout extends AbstractDomain {
     }
 
 
+    @Override
+    public String toString() {
+        return "Layout{" +
+                "creator=" + creator +
+                ", schema='" + schema + '\'' +
+                '}';
+    }
 }

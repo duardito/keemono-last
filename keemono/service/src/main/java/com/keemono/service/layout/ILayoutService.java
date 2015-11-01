@@ -1,8 +1,6 @@
 package com.keemono.service.layout;
 
 import com.keemono.common.converter.dto.layout.LayoutDto;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -11,7 +9,7 @@ import java.util.List;
  */
 public interface ILayoutService {
 
-    LayoutDto updateLayout(LayoutDto layoutDto);
+    LayoutDto updateLayout(LayoutDto layoutDto, String layoutUuid);
 
     LayoutDto createLayout(LayoutDto layoutDto) throws Exception;
 

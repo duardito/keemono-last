@@ -9,11 +9,10 @@ import org.springframework.stereotype.Component;
  * Created by edu on 12/10/2015.
  */
 @Component
-public class LayoutServiceCustomMapper extends CustomBaseMapper<Layout, LayoutDto> {
+public class LayoutCustomMapper extends CustomBaseMapper<LayoutDto, Layout> {
 
-    public LayoutServiceCustomMapper(){
+    public LayoutCustomMapper() {
         super();
-        addField("schema", "schema");
-        addField("creator.uuid","userUuid");
+        addField("userUuid","creator.uuid");
     }
 }

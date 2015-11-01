@@ -18,7 +18,7 @@ public abstract class AbstractDomain implements Serializable {
     private String name;
 
     @Column(name = "uuid", nullable = false,length = 36)
-    private String uuid;
+    protected String uuid;
 
     public Long getId() {
         return id;
@@ -37,7 +37,11 @@ public abstract class AbstractDomain implements Serializable {
     }
 
     public String getUuid() {
-        return UUID.randomUUID().toString();
+
+        if(uuid == null){
+            return UUID.randomUUID().toString();
+        }
+        return uuid;
     }
 
     public void setUuid(String uuid) {

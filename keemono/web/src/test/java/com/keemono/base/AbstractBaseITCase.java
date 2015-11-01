@@ -39,15 +39,13 @@ import java.util.List;
 /**
  * Created by edu on 17/10/2015.
  */
-//@Transactional
-//@DbUnitConfiguration(databaseConnection={"dataSource"})
+
 @TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
         DirtiesContextTestExecutionListener.class,
         TransactionalTestExecutionListener.class,
         DbUnitTestExecutionListener.class })
 @WebAppConfiguration
 @EnableAspectJAutoProxy
-//@ComponentScan(basePackages = {"com.keemono.web","com.keemono.common","com.keemono.service","com.keemono.integration"} )
 @Configuration
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {WebConfiguration.class})

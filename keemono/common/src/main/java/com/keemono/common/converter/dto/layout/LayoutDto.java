@@ -2,34 +2,32 @@ package com.keemono.common.converter.dto.layout;
 
 import com.keemono.common.converter.base.AbstractDto;
 
-import java.util.UUID;
-
 /**
  * Created by edu on 10/05/2015.
  */
 public class LayoutDto extends AbstractDto {
 
-    private String uuid;
+
+    private String layoutUuid;
 
     private String schema;
 
-    private String userId;
+    private String userUuid;
 
-    public String getUuid() {
-        return UUID.randomUUID().toString();
+    public String getLayoutUuid() {
+         return layoutUuid;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setLayoutUuid(String layoutUuid) {
+        this.layoutUuid = layoutUuid;
     }
 
-
-    public String getUserId() {
-        return userId;
+    public String getUserUuid() {
+        return userUuid;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUserUuid(String userUuid) {
+        this.userUuid = userUuid;
     }
 
     public String getSchema() {

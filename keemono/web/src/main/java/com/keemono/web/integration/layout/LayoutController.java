@@ -66,8 +66,8 @@ public class LayoutController extends BaseMapper {
                                        @ApiParam( value = "basic data to update layout", required = true) @RequestBody  @Valid final LayoutRequest layoutRequest){
 
         LayoutDto layoutDto = mapper.map(layoutRequest,LayoutDto.class);
-        layoutDto.setUuid(uuid);
-        layoutDto =layoutService.updateLayout(layoutDto);
+
+        layoutDto =layoutService.updateLayout(layoutDto, uuid);
         return mapper.map(layoutDto, LayoutResponse.class);
     }
 

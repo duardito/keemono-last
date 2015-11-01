@@ -30,11 +30,6 @@
     </dependency>
     <dependency>
         <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-jpamodelgen</artifactId>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
     </dependency>
 </dependencies>
