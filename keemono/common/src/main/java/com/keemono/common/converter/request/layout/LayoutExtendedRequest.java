@@ -5,14 +5,14 @@ package com.keemono.common.converter.request.layout;
  */
 public class LayoutExtendedRequest extends LayoutRequest{
 
-    private Long userId;
+    private String userId;
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 }

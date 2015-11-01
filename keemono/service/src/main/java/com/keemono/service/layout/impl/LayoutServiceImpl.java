@@ -31,7 +31,7 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
     public LayoutDto updateLayout(LayoutDto layoutDto){
 
-        Layout lay = layoutRepository.findByUUID(layoutDto.getUuid());
+        Layout lay = layoutRepository.findUUID(layoutDto.getUuid());
 
         Layout layout = mapper.map(layoutDto,Layout.class);
         lay.setSchema(layout.getSchema());

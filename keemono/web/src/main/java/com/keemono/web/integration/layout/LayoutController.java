@@ -61,13 +61,13 @@ public class LayoutController extends BaseMapper {
 
     @ApiOperation(value = "update a layout", notes = "update a layout",response =LayoutResponse.class )
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping( method = RequestMethod.PUT, produces = Constants._APPLICATION_JSON )
+    @RequestMapping(value = "/{uuid}" ,method = RequestMethod.PUT, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
     public LayoutResponse updateLayout(@ApiParam( value = "layout identifier by its uuid", required = true) @PathVariable String uuid,
                                        @ApiParam( value = "basic data to update layout", required = true) @RequestBody  @Valid final LayoutRequest layoutRequest){
 
         LayoutDto layoutDto = mapper.map(layoutRequest,LayoutDto.class);
         layoutDto.setUuid(uuid);
-
+        layoutDto =layoutService.updateLayout(layoutDto);
         return mapper.map(layoutDto, LayoutResponse.class);
     }
 

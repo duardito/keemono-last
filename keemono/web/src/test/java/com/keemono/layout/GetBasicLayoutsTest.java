@@ -44,7 +44,7 @@ public class GetBasicLayoutsTest extends AbstractBaseITCase {
 
         new SimpleDatasetWithOperation(INIT_LAYOUT_DATASET, DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
 
-        String layoutReq="{\"name\":\"test4\",\"schema\":\"<div35/>\", \"userId\":\"1\"}";
+        String layoutReq="{\"name\":\"test4\",\"schema\":\"<div35/>\", \"userId\":\"1695b78b-7218-4e53-897b-51d29c250965\"}";
         getMockMvc().perform(
                 post(Constants._LAYOUT_URL).contentType(MediaType.APPLICATION_JSON).content(layoutReq))
                 .andExpect(status().isCreated()).andReturn();
@@ -56,13 +56,12 @@ public class GetBasicLayoutsTest extends AbstractBaseITCase {
     public void updateLayout() throws Exception {
         new SimpleDatasetWithOperation(INIT_LAYOUT_DATASET, DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
 
-        //<layout  name="test3" data="div1" uuid="5695b78b-7218-4e53-897b-51d29c250933" />
 
         String layoutReq="{\"name\":\"test3\",\"schema\":\"divupdated\"}";
 
         getMockMvc().perform(
-                put(Constants._LAYOUT_URL, "5695b78b-7218-4e53-897b-51d29c250933").contentType(MediaType.APPLICATION_JSON).content(layoutReq))
-                .andExpect(status().isCreated()).andReturn();
+                put(Constants._LAYOUT_URL+"/{uuid}", "5695b78b-7218-4e53-897b-51d29c250933").contentType(MediaType.APPLICATION_JSON).content(layoutReq))
+                .andExpect(status().isOk()).andReturn();
 
         assertDatasetWithNulls(EXPECTED_UPDATED_LAYOUT_DATASET, generateBeanValidator());
     }
