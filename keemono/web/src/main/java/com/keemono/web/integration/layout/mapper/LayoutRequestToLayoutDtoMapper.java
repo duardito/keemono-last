@@ -13,7 +13,7 @@ public class LayoutRequestToLayoutDtoMapper extends CustomBaseMapper<LayoutReque
 
     public LayoutRequestToLayoutDtoMapper(){
         super();
-        addField("values", "values");
+        addField("schema", "schema");
         addField("name", "name");
     }
 

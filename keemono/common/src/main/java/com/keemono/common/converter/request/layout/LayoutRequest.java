@@ -7,7 +7,7 @@ import com.wordnik.swagger.annotations.ApiModel;
 public class LayoutRequest extends AbstractRequest {
 
     private String name;
-    private String values;
+    private String schema;
 
     public String getName() {
         return name;
@@ -17,11 +17,13 @@ public class LayoutRequest extends AbstractRequest {
         this.name = name;
     }
 
-    public String getValues() {
-        return values;
+
+    public String getSchema() {
+        return schema;
     }
 
-    public void setValues(String values) {
-        this.values = values;
+    public void setSchema(String schema) {
+        this.schema = schema;
     }
+
 }

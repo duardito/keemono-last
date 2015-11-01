@@ -1,10 +1,13 @@
 package com.keemono.core.mysql.Repository.user;
 
 import com.keemono.core.mysql.domain.user.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.io.Serializable;
 
 /**
  * Created by edu on 31/05/2015.
  */
-public interface UserRepository  extends JpaRepository<User, Long> {
+public interface UserRepository  <M, S extends Serializable>{
+
+    User findOne(String uuid);
 }

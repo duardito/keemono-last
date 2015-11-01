@@ -9,6 +9,8 @@ import java.util.List;
  */
 public interface ILayoutService {
 
+    LayoutDto updateLayout(LayoutDto layoutDto, String layoutUuid);
+
     LayoutDto createLayout(LayoutDto layoutDto) throws Exception;
 
     List<LayoutDto> getAllLayoutList();

@@ -7,14 +7,34 @@ import com.keemono.common.converter.base.AbstractDto;
  */
 public class LayoutDto extends AbstractDto {
 
-    private String values;
 
-    public String getValues() {
-        return values;
+    private String layoutUuid;
+
+    private String schema;
+
+    private String userUuid;
+
+    public String getLayoutUuid() {
+         return layoutUuid;
     }
 
-    public void setValues(String values) {
-        this.values = values;
+    public void setLayoutUuid(String layoutUuid) {
+        this.layoutUuid = layoutUuid;
     }
 
+    public String getUserUuid() {
+        return userUuid;
+    }
+
+    public void setUserUuid(String userUuid) {
+        this.userUuid = userUuid;
+    }
+
+    public String getSchema() {
+        return schema;
+    }
+
+    public void setSchema(String schema) {
+        this.schema = schema;
+    }
 }

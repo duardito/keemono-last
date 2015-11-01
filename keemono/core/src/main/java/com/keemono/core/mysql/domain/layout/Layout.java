@@ -1,6 +1,7 @@
 package com.keemono.core.mysql.domain.layout;
 
 import com.keemono.core.mysql.domain.AbstractDomain;
+import com.keemono.core.mysql.domain.user.User;
 
 import javax.persistence.*;
 
@@ -11,14 +12,45 @@ import javax.persistence.*;
 @Table(name = "layout")
 public class Layout extends AbstractDomain {
 
-    @Column(name = "valores", nullable = false,length = 2000)
-    private String values;
 
-    public String getValues() {
-        return values;
+    public Layout(){
+        super();
+
+        if(this.uuid == null){
+            this.uuid = getUuid();
+        }
+
     }
 
-    public void setValues(String values) {
-        this.values = values;
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    private User creator;
+
+    @Column(name = "data", nullable = false,length = 2000)
+    private String schema;
+
+    public String getSchema() {
+        return schema;
+    }
+
+    public void setSchema(String schema) {
+        this.schema = schema;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Layout{" +
+                "creator=" + creator +
+                ", schema='" + schema + '\'' +
+                '}';
     }
 }

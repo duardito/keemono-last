@@ -2,6 +2,7 @@ package com.keemono.web.integration.layout;
 
 import com.keemono.common.Constants;
 import com.keemono.common.converter.dto.layout.LayoutDto;
+import com.keemono.common.converter.request.layout.LayoutExtendedRequest;
 import com.keemono.common.converter.request.layout.LayoutRequest;
 import com.keemono.common.converter.response.layout.LayoutResponse;
 import com.keemono.common.converter.response.layout.ListLayoutResponse;
@@ -35,9 +36,9 @@ public class LayoutController extends BaseMapper {
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
     public LayoutResponse createLayout(@ApiParam(
-            value = "basic data to create layout", required = true) @RequestBody  @Valid final LayoutRequest layoutRequest) throws Exception {
+            value = "basic data to create layout", required = true) @RequestBody  @Valid final LayoutExtendedRequest layoutExtendedRequest) throws Exception {
 
-        LayoutDto layoutDto = mapper.map(layoutRequest,LayoutDto.class);
+        LayoutDto layoutDto = mapper.map(layoutExtendedRequest,LayoutDto.class);
 
         layoutDto = layoutService.createLayout(layoutDto);
 
@@ -49,7 +50,6 @@ public class LayoutController extends BaseMapper {
     @RequestMapping( method = RequestMethod.GET, produces = Constants._APPLICATION_JSON )
     public ListLayoutResponse getLayouts(@ModelAttribute @Valid final PaginationRequest paginationRequest,@Valid final OrdinationRequest ordinationRequest){
 
-
         final List <LayoutDto> lista = layoutService.getAllLayoutList();
 
         final ListLayoutResponse listLayoutResponse = new ListLayoutResponse();
@@ -58,4 +58,17 @@ public class LayoutController extends BaseMapper {
 
         return listLayoutResponse;
     }
+
+    @ApiOperation(value = "update a layout", notes = "update a layout",response =LayoutResponse.class )
+    @ResponseStatus(value = HttpStatus.OK)
+    @RequestMapping(value = "/{uuid}" ,method = RequestMethod.PUT, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
+    public LayoutResponse updateLayout(@ApiParam( value = "layout identifier by its uuid", required = true) @PathVariable String uuid,
+                                       @ApiParam( value = "basic data to update layout", required = true) @RequestBody  @Valid final LayoutRequest layoutRequest){
+
+        LayoutDto layoutDto = mapper.map(layoutRequest,LayoutDto.class);
+
+        layoutDto =layoutService.updateLayout(layoutDto, uuid);
+        return mapper.map(layoutDto, LayoutResponse.class);
+    }
+
 }

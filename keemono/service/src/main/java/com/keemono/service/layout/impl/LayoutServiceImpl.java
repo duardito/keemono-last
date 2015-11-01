@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,33 +28,51 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
     @Autowired
     private LayoutRepository layoutRepository;
 
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
+    public LayoutDto updateLayout(final LayoutDto layoutDto, String layoutUuid){
+
+        Layout layout = layoutRepository.findUUID(layoutUuid);
 
 
+        if(layoutDto.getSchema()!=null && !layoutDto.getSchema().isEmpty()){
+            layout.setSchema(layoutDto.getSchema());
+        }
+        if(layoutDto.getName()!=null && !layoutDto.getName().isEmpty()){
+            layout.setName(layoutDto.getName());
+        }
+
+        if(layoutDto.getUserUuid()!=null && !layoutDto.getUserUuid().isEmpty()){
+            User user = userRepository.findOne(layoutDto.getUserUuid());
+            layout.setCreator(user);
+        }
+
+
+        layout =layoutRepository.update(layout);
+        return mapper.map(layout,LayoutDto.class);
+    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
     public LayoutDto createLayout(LayoutDto layoutDto) throws Exception {
-        //System.out.println("la transaction 1: "+ TransactionSynchronizationManager.isCurrentTransactionReadOnly());
+        System.out.println("-----------------" + TransactionSynchronizationManager.isCurrentTransactionReadOnly());
 
         Layout layout = mapper.map(layoutDto,Layout.class);
-        try {
-            User user = new User();
-            user.setName("edu");
-            //layout.setSchema("pepitoooo");
-           // user.setLayout(layout);
-            //userRepository.save(user);
 
+        //FIXME: quitar esta validacion cuando ya estemos pasando el usuario logeado
+        if(layoutDto.getUserUuid() !=null){
+            User user = userRepository.findOne(layoutDto.getUserUuid());
+            if(user !=null){
+                layout.setCreator(user);
+            }
+        }
+        try {
 
           layout = layoutRepository.save(layout);
-            System.out.println("el layout es: " + layout.getId());
-            //user = null;
-            //userRepository.save(user);
         }catch (Exception e) {
-
             throw new Exception(e);
         }
         return mapper.map(layout,LayoutDto.class);
-        //return layoutDtoConverter.createDto(layout);
     }
 
 
