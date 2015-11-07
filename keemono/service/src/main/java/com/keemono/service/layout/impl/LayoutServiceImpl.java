@@ -34,12 +34,11 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
 
         Layout layout = layoutRepository.findUUID(layoutUuid);
 
-
         if(layoutDto.getSchema()!=null && !layoutDto.getSchema().isEmpty()){
             layout.setSchema(layoutDto.getSchema());
         }
-        if(layoutDto.getName()!=null && !layoutDto.getName().isEmpty()){
-            layout.setName(layoutDto.getName());
+            if(layoutDto.getName()!=null && !layoutDto.getName().isEmpty()){
+                layout.setName(layoutDto.getName());
         }
 
         if(layoutDto.getUserUuid()!=null && !layoutDto.getUserUuid().isEmpty()){
@@ -47,9 +46,8 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
             layout.setCreator(user);
         }
 
-
-        layout =layoutRepository.update(layout);
-        return mapper.map(layout,LayoutDto.class);
+        layout = layoutRepository.update(layout);
+        return mapper.map(layout, LayoutDto.class);
     }
 
     @Override
