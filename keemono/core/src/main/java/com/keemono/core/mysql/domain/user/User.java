@@ -17,6 +17,11 @@ import java.util.List;
 @Table(name = "user")
 public class User extends AbstractDomain {
 
+    public User(){
+        super();
+
+    }
+
     @OneToMany
     private List<Layout> layout;
 

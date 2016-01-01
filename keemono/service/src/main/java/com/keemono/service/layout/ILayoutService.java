@@ -13,5 +13,7 @@ public interface ILayoutService {
 
     LayoutDto createLayout(LayoutDto layoutDto) throws Exception;
 
+    LayoutDto getLayoutByUUId(String uuid);
+
     List<LayoutDto> getAllLayoutList();
 }

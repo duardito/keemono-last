@@ -11,7 +11,7 @@ import javax.persistence.EntityManager;
  * Created by edu on 01/11/2015.
  */
 @Component
-public class BaseRepository {
+public class BaseRepository <M>{
 
     @Autowired
     private EntityManager entityManager;
@@ -21,7 +21,5 @@ public class BaseRepository {
         session.setFlushMode(FlushMode.COMMIT);
         return session;
     }
-
-
 
 }

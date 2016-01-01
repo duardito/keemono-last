@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * Created by edu on 01/11/2015.
  */
 @Repository
-public class UserRepositoryImpl extends BaseRepository implements UserRepository{
+public class UserRepositoryImpl extends BaseRepository implements IUserRepository {
 
     @Override
     public User findOne(String uuid) {

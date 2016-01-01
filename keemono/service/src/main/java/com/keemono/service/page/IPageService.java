@@ -7,7 +7,9 @@ import com.keemono.common.converter.dto.page.PageDto;
  */
 public interface IPageService {
 
-    PageDto getPageById(String id);
+    PageDto getPageByUUId(String id);
 
     PageDto createPage(PageDto pageDto);
+
+    PageDto updatePage(PageDto pageDto, String uuid);
 }

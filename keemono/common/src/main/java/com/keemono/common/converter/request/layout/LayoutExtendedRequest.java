@@ -5,13 +5,13 @@ package com.keemono.common.converter.request.layout;
  */
 public class LayoutExtendedRequest extends LayoutRequest{
 
-    private String userUuid;
+    private String creator;
 
-    public String getUserUuid() {
-        return userUuid;
+    public String getCreator() {
+        return creator;
     }
 
-    public void setUserUuid(String userUuid) {
-        this.userUuid = userUuid;
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 }

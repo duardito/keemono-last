@@ -4,6 +4,7 @@ import com.keemono.common.Constants;
 import com.keemono.common.converter.dto.page.PageDto;
 import com.keemono.common.converter.request.page.PageRequest;
 import com.keemono.common.converter.response.page.PageResponse;
+import com.keemono.common.mapper.BaseMapper;
 import com.keemono.service.page.IPageService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -12,40 +13,40 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 /**
  * Created by edu on 25/04/2015.
  */
 @Api(value = "/page", description = "Operations to do about a page")
 @RequestMapping(value = Constants._PAGE_URL)
 @RestController
-public class PageController {
+public class PageController extends BaseMapper {
 
     @Autowired
     private IPageService pageService;
 
     @ApiOperation(value = "get  a page", notes = "get  a page", response = PageResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping(value = Constants._ID, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
+    @RequestMapping(value = Constants._UUID, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
     public PageResponse getPage(@ApiParam(
-            value = "id of page", required = true) @PathVariable String id){
+            value = "id of page", required = true) @PathVariable String uuid){
 
-        final PageDto pageDto = pageService.getPageById(id);
-        //return pageResponseConverter.createDto(pageDto);
-        return null;
+        final PageDto pageDto = pageService.getPageByUUId(uuid);
+
+        return mapper.map(pageDto, PageResponse.class);
     }
 
     @ApiOperation(value = "create a page", notes = "create a page", response = PageResponse.class)
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON)
-    public PageResponse createPage(@RequestBody PageRequest pageRequest ){
+    public PageResponse createPage(@ApiParam(value = "basic data to create a page", required = true)
+                                       @RequestBody @Valid PageRequest pageRequest ){
 
-        //PageDto pageDto = pageRequestConverter.createFromDto(pageRequest);
-        PageDto pageDto = null;
-                pageDto = pageService.createPage(pageDto);
+        PageDto pageDto = mapper.map(pageRequest, PageDto.class);
+        pageDto = pageService.createPage(pageDto);
 
-
-        //return  pageResponseConverter.createDto(pageDto);
-        return null;
+        return mapper.map(pageDto, PageResponse.class);
 
     }
 

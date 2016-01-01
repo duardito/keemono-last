@@ -36,8 +36,8 @@ public class LayoutController extends BaseMapper {
     @ApiOperation(value = "create a layout", notes = "create a layout", response = LayoutResponse.class)
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
-    public LayoutResponse createLayout(@ApiParam(
-            value = "basic data to create layout", required = true) @RequestBody  @Valid final LayoutExtendedRequest layoutExtendedRequest) throws Exception {
+    public LayoutResponse createLayout(@ApiParam(value = "basic data to create layout", required = true)
+                                           @RequestBody  @Valid final LayoutExtendedRequest layoutExtendedRequest) throws Exception {
 
         LayoutDto layoutDto = mapper.map(layoutExtendedRequest,LayoutDto.class);
 

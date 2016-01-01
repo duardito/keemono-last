@@ -8,6 +8,15 @@ public abstract class AbstractDto {
     private Long id;
 
     private String name;
+    private String uuid;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public Long getId() {
         return id;

@@ -2,7 +2,7 @@ package com.keemono.service.layout.mapper;
 
 import com.keemono.common.converter.dto.layout.LayoutDto;
 import com.keemono.common.mapper.CustomBaseMapper;
-import com.keemono.core.mysql.Repository.user.UserRepository;
+import com.keemono.core.mysql.Repository.user.IUserRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
 import ma.glasnost.orika.MappingContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,12 @@ import org.springframework.stereotype.Component;
 public class LayoutToLayoutDTOMapper extends CustomBaseMapper<Layout, LayoutDto> {
 
     @Autowired
-    private UserRepository userRepository;
+    private IUserRepository userRepository;
 
     public LayoutToLayoutDTOMapper(){
         super();
         addField("schema", "schema");
-        addField("creator.uuid", "userUuid");
+        addField("creator.uuid", "creator");
     }
 
     @Override

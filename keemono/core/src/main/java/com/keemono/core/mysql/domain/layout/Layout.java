@@ -12,13 +12,8 @@ import javax.persistence.*;
 @Table(name = "layout")
 public class Layout extends AbstractDomain {
 
-
     public Layout(){
         super();
-
-        if(this.uuid == null){
-            this.uuid = getUuid();
-        }
 
     }
 

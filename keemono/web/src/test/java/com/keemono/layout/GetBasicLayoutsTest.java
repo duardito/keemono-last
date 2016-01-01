@@ -44,7 +44,7 @@ public class GetBasicLayoutsTest extends AbstractBaseITCase {
 
         new SimpleDatasetWithOperation(INIT_LAYOUT_DATASET, DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
 
-        String layoutReq="{\"name\":\"test4\",\"schema\":\"<div35/>\", \"userUuid\":\"1695b78b-7218-4e53-897b-51d29c250965\"}";
+        String layoutReq="{\"name\":\"test4\",\"schema\":\"<div35/>\", \"creator\":\"1695b78b-7218-4e53-897b-51d29c250965\"}";
         getMockMvc().perform(
                 post(Constants._LAYOUT_URL).contentType(MediaType.APPLICATION_JSON).content(layoutReq))
                 .andExpect(status().isCreated()).andReturn();

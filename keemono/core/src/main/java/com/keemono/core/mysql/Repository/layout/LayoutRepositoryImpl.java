@@ -8,12 +8,13 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by edu on 31/10/2015.
  */
 @Repository
-public class LayoutRepositoryImpl extends BaseRepository implements LayoutRepository {
+public class LayoutRepositoryImpl extends BaseRepository implements ILayoutRepository {
 
     @Override
     public List<Layout> findAll(){
@@ -30,6 +31,7 @@ public class LayoutRepositoryImpl extends BaseRepository implements LayoutReposi
 
     @Override
     public Layout save(Layout layout){
+        layout.setUuid(UUID.randomUUID().toString());
         getSession().save(layout);
         getSession().flush();
         return layout;
@@ -41,7 +43,6 @@ public class LayoutRepositoryImpl extends BaseRepository implements LayoutReposi
         criteria.add(Restrictions.eq(Layout_.uuid.getName() ,uuid));
         Layout layout = (Layout) criteria.uniqueResult();
         return layout;
-
     }
 
 }
