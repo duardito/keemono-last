@@ -1,7 +1,5 @@
 package com.keemono.service.page.impl;
 
-import com.keemono.common.converter.dto.layout.LayoutDto;
-import com.keemono.common.converter.dto.page.PageDto;
 import com.keemono.common.mapper.BaseMapper;
 import com.keemono.core.mysql.Repository.page.IPageRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
@@ -28,41 +26,35 @@ public class PageServiceImpl extends BaseMapper implements IPageService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = true)
-    public PageDto getPageByUUId(String uuid){
-        Page page =pageRepository.findUUID(uuid);
-        return mapper.map(page, PageDto.class);
+    public Page getPageByUUId(String uuid){
+        return pageRepository.findUUID(uuid);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class)
-    public PageDto createPage(PageDto pageDto){
+    public Page createPage(Page page){
 
-        LayoutDto layoutDto=layoutService.getLayoutByUUId(pageDto.getLayout());
-
-        Page page = mapper.map(pageDto, Page.class);
-        Layout layout = mapper.map(layoutDto, Layout.class);
+        Layout layout=layoutService.getLayoutByUUId(page.getLayout().getUuid());
         page.setLayout(layout);
-
         page =pageRepository.save(page);
-        return mapper.map(page,PageDto.class);
+        return page;
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class)
-    public PageDto updatePage(PageDto pageDto, String uuid){
+    public Page updatePage(Page pageDto, String uuid){
 
         Page page = pageRepository.findUUID(uuid);
 
         if(pageDto.getLayout() != null){
-            LayoutDto layout = layoutService.getLayoutByUUId(pageDto.getLayout());
-            Layout dto = mapper.map(layout, Layout.class);
-            page.setLayout(dto);
+            Layout layout = layoutService.getLayoutByUUId(pageDto.getLayout().getUuid());
+            page.setLayout(layout);
         }
         if(pageDto.getName() !=null && !pageDto.getName().isEmpty()){
             page.setName(pageDto.getName());
         }
 
-        pageRepository.update(page);
-        return mapper.map(page,PageDto.class);
+        page =pageRepository.update(page);
+        return page;
     }
 }
