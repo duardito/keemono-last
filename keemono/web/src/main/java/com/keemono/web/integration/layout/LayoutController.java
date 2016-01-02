@@ -47,7 +47,7 @@ public class LayoutController extends BaseMapper {
     }
 
     @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
-    @ApiOperation(value = "get a layout", notes = "get a layout",response =ListLayoutResponse.class )
+    @ApiOperation(value = "get a layout", notes = "get all layout list",response =ListLayoutResponse.class )
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping( method = RequestMethod.GET, produces = Constants._APPLICATION_JSON )
     public ListLayoutResponse getLayouts(@ModelAttribute @Valid final PaginationRequest paginationRequest,@Valid final OrdinationRequest ordinationRequest){

@@ -6,6 +6,9 @@ import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.core.mysql.domain.page.Page;
 import com.keemono.service.layout.ILayoutService;
 import com.keemono.service.page.IPageService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -23,6 +26,13 @@ public class PageServiceImpl extends BaseMapper implements IPageService {
 
     @Autowired
     private ILayoutService layoutService;
+    
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = true)
+    public List <Page>getAllPages(){
+    	List<Page> list = pageRepository.findAll();
+    	return list;
+    }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = true)

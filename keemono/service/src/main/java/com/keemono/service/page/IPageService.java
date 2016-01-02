@@ -1,6 +1,8 @@
 package com.keemono.service.page;
 
 
+import java.util.List;
+
 import com.keemono.core.mysql.domain.page.Page;
 
 /**
@@ -13,4 +15,6 @@ public interface IPageService {
     Page createPage(Page pageDto);
 
     Page updatePage(Page pageDto, String uuid);
+
+	List<Page> getAllPages();
 }

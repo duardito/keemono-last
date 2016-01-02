@@ -4,6 +4,7 @@ import com.keemono.core.mysql.Repository.BaseRepository;
 import com.keemono.core.mysql.domain.page.Page;
 import com.keemono.core.mysql.domain.page.Page_;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,7 @@ public class PageRepositoryImpl extends BaseRepository implements IPageRepositor
     @Override
     public List<Page> findAll(){
         Criteria criteria = getSession().createCriteria(Page.class);
+		criteria.setFetchMode(Page_.layout.getName(), FetchMode.JOIN);
         return criteria.list();
     }
 
@@ -40,6 +42,7 @@ public class PageRepositoryImpl extends BaseRepository implements IPageRepositor
     @Override
     public Page findUUID(String uuid) {
         Criteria criteria = getSession().createCriteria(Page.class);
+        criteria.setFetchMode(Page_.layout.getName(), FetchMode.JOIN);
         criteria.add(Restrictions.eq(Page_.uuid.getName() ,uuid));
         Page page = (Page) criteria.uniqueResult();
         return page;

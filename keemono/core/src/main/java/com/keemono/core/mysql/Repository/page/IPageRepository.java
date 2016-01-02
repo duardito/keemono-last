@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by edu on 01/01/2016.
  */
-public interface IPageRepository<M, S extends Serializable> {
+public interface IPageRepository{
 
     Page update(Page layout);
 
