@@ -49,4 +49,17 @@ public class PageController extends BaseMapper {
 
     }
 
+    @ApiOperation(value = "edit a page", notes = "edit a page", response = PageResponse.class)
+    @ResponseStatus(value = HttpStatus.OK)
+    @RequestMapping(value = Constants._UUID, method = RequestMethod.PUT, produces = Constants._APPLICATION_JSON)
+    public PageResponse updatePage(
+            @ApiParam(value = "basic data to create a page", required = true)@RequestBody @Valid PageRequest pageRequest,
+            @ApiParam(value = "uuid of page", required = true) @PathVariable String uuid){
+
+        Page page = mapper.map(pageRequest, Page.class);
+        page = pageService.updatePage(page,uuid);
+
+        return mapper.map(page, PageResponse.class);
+    }
+
 }
