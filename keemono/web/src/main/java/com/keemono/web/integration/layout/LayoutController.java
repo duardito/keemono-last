@@ -39,11 +39,11 @@ public class LayoutController extends BaseMapper {
     public LayoutResponse createLayout(@ApiParam(value = "basic data to create layout", required = true)
                                            @RequestBody  @Valid final LayoutExtendedRequest layoutExtendedRequest) throws Exception {
 
-        Layout layoutDto = mapper.map(layoutExtendedRequest,Layout.class);
+        Layout layout = mapper.map(layoutExtendedRequest,Layout.class);
 
-        layoutDto = layoutService.createLayout(layoutDto);
+        layout = layoutService.createLayout(layout);
 
-        return mapper.map(layoutDto, LayoutResponse.class);
+        return mapper.map(layout, LayoutResponse.class);
     }
 
     @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
