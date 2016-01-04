@@ -20,10 +20,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 public class BasicLayoutsTest extends AbstractBaseITCase {
 
-    private static final String EXPECTED_CREATED_LAYOUT_DATASET = "dataset/layout/created-layout-expected.xml";
+    private static final String EXPECTED_CREATED_LAYOUT_DATASET = "dataset/layout/expected/created-layout-expected.xml";
     private static final String INIT_LAYOUT_DATASET = "dataset/layout/basic-layout.xml";
-    private static final String INIT_LAYOUT_EXPECTED_DATASET = "dataset/layout/basic-layout-expected.xml";
-    private static final String EXPECTED_UPDATED_LAYOUT_DATASET = "dataset/layout/updated-layout-expected.xml";
+    private static final String INIT_LAYOUT_EXPECTED_DATASET = "dataset/layout/expected/basic-layout-expected.xml";
+    private static final String EXPECTED_UPDATED_LAYOUT_DATASET = "dataset/layout/expected/updated-layout-expected.xml";
 
     @Test
     public void getAllLayouts() throws Exception {
