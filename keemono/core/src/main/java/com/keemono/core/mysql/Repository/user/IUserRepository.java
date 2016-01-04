@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by edu on 31/05/2015.
  */
-public interface UserRepository  <M, S extends Serializable>{
+public interface IUserRepository<M, S extends Serializable>{
 
     User findOne(String uuid);
 }

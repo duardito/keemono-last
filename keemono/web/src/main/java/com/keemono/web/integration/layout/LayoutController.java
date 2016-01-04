@@ -1,7 +1,6 @@
 package com.keemono.web.integration.layout;
 
 import com.keemono.common.Constants;
-import com.keemono.common.converter.dto.layout.LayoutDto;
 import com.keemono.common.converter.request.layout.LayoutExtendedRequest;
 import com.keemono.common.converter.request.layout.LayoutRequest;
 import com.keemono.common.converter.response.layout.LayoutResponse;
@@ -9,6 +8,7 @@ import com.keemono.common.converter.response.layout.ListLayoutResponse;
 import com.keemono.common.mapper.BaseMapper;
 import com.keemono.common.ordination.OrdinationRequest;
 import com.keemono.common.pagination.PaginationRequest;
+import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.service.layout.ILayoutService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -36,23 +36,23 @@ public class LayoutController extends BaseMapper {
     @ApiOperation(value = "create a layout", notes = "create a layout", response = LayoutResponse.class)
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
-    public LayoutResponse createLayout(@ApiParam(
-            value = "basic data to create layout", required = true) @RequestBody  @Valid final LayoutExtendedRequest layoutExtendedRequest) throws Exception {
+    public LayoutResponse createLayout(@ApiParam(value = "basic data to create layout", required = true)
+                                           @RequestBody  @Valid final LayoutExtendedRequest layoutExtendedRequest) throws Exception {
 
-        LayoutDto layoutDto = mapper.map(layoutExtendedRequest,LayoutDto.class);
+        Layout layout = mapper.map(layoutExtendedRequest,Layout.class);
 
-        layoutDto = layoutService.createLayout(layoutDto);
+        layout = layoutService.createLayout(layout);
 
-        return mapper.map(layoutDto, LayoutResponse.class);
+        return mapper.map(layout, LayoutResponse.class);
     }
 
     @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
-    @ApiOperation(value = "get a layout", notes = "get a layout",response =ListLayoutResponse.class )
+    @ApiOperation(value = "get a layout", notes = "get all layout list",response =ListLayoutResponse.class )
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping( method = RequestMethod.GET, produces = Constants._APPLICATION_JSON )
     public ListLayoutResponse getLayouts(@ModelAttribute @Valid final PaginationRequest paginationRequest,@Valid final OrdinationRequest ordinationRequest){
 
-        final List <LayoutDto> lista = layoutService.getAllLayoutList();
+        final List <Layout> lista = layoutService.getAllLayoutList();
 
         final ListLayoutResponse listLayoutResponse = new ListLayoutResponse();
         List<LayoutResponse> out = mapper.mapAsList(lista, LayoutResponse.class);
@@ -67,7 +67,7 @@ public class LayoutController extends BaseMapper {
     public LayoutResponse updateLayout(@ApiParam( value = "layout identifier by its uuid", required = true) @PathVariable String uuid,
                                        @ApiParam( value = "basic data to update layout", required = true) @RequestBody  @Valid final LayoutRequest layoutRequest){
 
-        LayoutDto layoutDto = mapper.map(layoutRequest,LayoutDto.class);
+        Layout layoutDto = mapper.map(layoutRequest,Layout.class);
 
         layoutDto =layoutService.updateLayout(layoutDto, uuid);
         return mapper.map(layoutDto, LayoutResponse.class);

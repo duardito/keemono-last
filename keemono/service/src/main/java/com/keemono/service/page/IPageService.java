@@ -1,13 +1,20 @@
 package com.keemono.service.page;
 
-import com.keemono.common.converter.dto.page.PageDto;
+
+import java.util.List;
+
+import com.keemono.core.mysql.domain.page.Page;
 
 /**
  * Created by edu on 09/05/2015.
  */
 public interface IPageService {
 
-    PageDto getPageById(String id);
+    Page getPageByUUId(String id);
 
-    PageDto createPage(PageDto pageDto);
+    Page createPage(Page pageDto);
+
+    Page updatePage(Page pageDto, String uuid);
+
+	List<Page> getAllPages();
 }

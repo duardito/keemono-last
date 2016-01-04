@@ -12,22 +12,16 @@ import javax.persistence.*;
 @Table(name = "layout")
 public class Layout extends AbstractDomain {
 
-
     public Layout(){
         super();
-
-        if(this.uuid == null){
-            this.uuid = getUuid();
-        }
-
     }
+
+    @Column(name = "data", nullable = false,length = 2000)
+    private String schema;
 
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     @OneToOne(fetch = FetchType.LAZY)
     private User creator;
-
-    @Column(name = "data", nullable = false,length = 2000)
-    private String schema;
 
     public String getSchema() {
         return schema;

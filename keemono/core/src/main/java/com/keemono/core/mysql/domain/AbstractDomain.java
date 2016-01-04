@@ -18,7 +18,7 @@ public abstract class AbstractDomain implements Serializable {
     private String name;
 
     @Column(name = "uuid", nullable = false,length = 36)
-    protected String uuid;
+    private String uuid;
 
     public Long getId() {
         return id;

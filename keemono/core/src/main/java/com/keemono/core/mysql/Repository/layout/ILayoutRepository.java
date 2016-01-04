@@ -9,7 +9,7 @@ import java.util.List;
  * Created by edu on 31/10/2015.
  */
 
-public interface LayoutRepository<M, S extends Serializable>{
+public interface ILayoutRepository<M, S extends Serializable>{
 
     Layout update(Layout layout);
 

@@ -22,6 +22,18 @@ CREATE TABLE `layout` (
   CONSTRAINT `fk_layout_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+CREATE TABLE `page` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `layout_id` bigint(20) unsigned NOT NULL,
+  `uuid` varchar(36) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uuid_UNIQUE` (`uuid`),
+  UNIQUE KEY `name_UNIQUE` (`name`),
+  KEY `fk_layout_idx` (`layout_id`),
+  CONSTRAINT `fk_layout` FOREIGN KEY (`layout_id`) REFERENCES `layout` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB;
+
 
 insert into user(id,name,uuid,lastname,email) values (1, 'edu','c695b78b-7218-4e53-897b-51d29c250965','frades','eduard.frades@gmail.com');
 insert into user(id,name,uuid,lastname,email) values (2,'juan','1063ac98-89c4-447c-aa08-c8ce354f809a','perez','juan.perez@gmail.com');

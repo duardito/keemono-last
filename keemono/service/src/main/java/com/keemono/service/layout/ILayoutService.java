@@ -1,6 +1,7 @@
 package com.keemono.service.layout;
 
-import com.keemono.common.converter.dto.layout.LayoutDto;
+
+import com.keemono.core.mysql.domain.layout.Layout;
 
 import java.util.List;
 
@@ -9,9 +10,11 @@ import java.util.List;
  */
 public interface ILayoutService {
 
-    LayoutDto updateLayout(LayoutDto layoutDto, String layoutUuid);
+    Layout updateLayout(Layout layoutDto, String layoutUuid);
 
-    LayoutDto createLayout(LayoutDto layoutDto) throws Exception;
+    Layout createLayout(Layout layoutDto) throws Exception;
 
-    List<LayoutDto> getAllLayoutList();
+    Layout getLayoutByUUId(String uuid);
+
+    List<Layout> getAllLayoutList();
 }
