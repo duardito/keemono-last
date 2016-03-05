@@ -10,7 +10,6 @@
     <version>${keemono.project.version}</version>
 
     <properties>
-
         <keemono.project.version>1.0-SNAPSHOT</keemono.project.version>
         <!--INIT : SPRING DEPENDENCIES -->
         <spring.core.version>4.2.1.RELEASE</spring.core.version>
@@ -338,6 +337,27 @@
         </resources>
         <finalName>keemono</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>4.0</version>
+
+                <configuration>
+                    <locations>
+                        <location>filesystem:sql/db/migration</location>
+                    </locations>
+                    <url>jdbc:mysql://46.4.112.248:10001/keemonotest?UseUnicode=true&amp;characterEncoding=utf8&amp;default_schema=true</url>
+                    <user>root</user>
+                    <password>root</password>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.driver.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
