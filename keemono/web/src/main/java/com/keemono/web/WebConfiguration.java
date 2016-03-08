@@ -13,7 +13,6 @@ import org.springframework.context.annotation.*;
  */
 @PropertySources({
                 @PropertySource("classpath:config/mysql.properties"),
-                @PropertySource("classpath:config/solr.properties"),
                 @PropertySource("classpath:config/init.properties"),
                 @PropertySource(value = "classpath:config/test.properties",ignoreResourceNotFound = true)
                 })

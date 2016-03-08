@@ -3,7 +3,7 @@
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>
-				 %d{HH:mm:ss.SSS} [%thread] %-5level - %logger{25} - %msg%n
+				 %d{HH:mm:ss.SSS} [%thread] %-5level - %logger{20} - %msg%n
 			</pattern>
 		</encoder>
 	</appender>
@@ -32,17 +32,5 @@
 		<appender-ref ref="STDOUT-QUERY" />
 	</logger>
 -->
-
-
-
-    <logger name="org.hibernate.type" level="INFO">
-        <appender-ref ref="STDOUT-QUERY" />
-    </logger>
-
-
-    <logger name="org.apache.solr" level="DEBUG">
-        <appender-ref ref="STDOUT-QUERY" />
-    </logger>
-
 
 </configuration>

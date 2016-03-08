@@ -1,6 +1,7 @@
 package com.keemono.web.integration.layout;
 
 import com.keemono.common.Constants;
+import com.keemono.common.converter.request.layout.LayoutCreateRequest;
 import com.keemono.common.converter.request.layout.LayoutExtendedRequest;
 import com.keemono.common.converter.request.layout.LayoutRequest;
 import com.keemono.common.converter.response.layout.LayoutResponse;
@@ -37,9 +38,9 @@ public class LayoutController extends BaseMapper {
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
     public LayoutResponse createLayout(@ApiParam(value = "basic data to create layout", required = true)
-                                           @RequestBody  @Valid final LayoutExtendedRequest layoutExtendedRequest) throws Exception {
+                                           @RequestBody  @Valid final LayoutCreateRequest layoutCreateRequest) throws Exception {
 
-        Layout layout = mapper.map(layoutExtendedRequest,Layout.class);
+        Layout layout = mapper.map(layoutCreateRequest,Layout.class);
 
         layout = layoutService.createLayout(layout);
 
@@ -65,7 +66,7 @@ public class LayoutController extends BaseMapper {
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = "/{uuid}" ,method = RequestMethod.PUT, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
     public LayoutResponse updateLayout(@ApiParam( value = "layout identifier by its uuid", required = true) @PathVariable String uuid,
-                                       @ApiParam( value = "basic data to update layout", required = true) @RequestBody  @Valid final LayoutRequest layoutRequest){
+                                       @ApiParam( value = "basic data to update layout", required = true) @RequestBody  @Valid final LayoutCreateRequest layoutRequest){
 
         Layout layoutDto = mapper.map(layoutRequest,Layout.class);
 
