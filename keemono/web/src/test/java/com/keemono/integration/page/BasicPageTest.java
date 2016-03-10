@@ -1,4 +1,4 @@
-package com.keemono.page;
+package com.keemono.integration.page;
 
 import com.keemono.base.AbstractBaseITCase;
 import com.keemono.base.AbstractTableValidatorBean;
