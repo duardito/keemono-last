@@ -24,6 +24,7 @@ public class BasicLayoutsTest extends AbstractBaseITCase {
     private static final String INIT_LAYOUT_DATASET = "dataset/layout/basic-layout.xml";
     private static final String INIT_LAYOUT_EXPECTED_DATASET = "dataset/layout/expected/basic-layout-expected.xml";
     private static final String EXPECTED_UPDATED_LAYOUT_DATASET = "dataset/layout/expected/updated-layout-expected.xml";
+    private static final String EXPECTED_UPDATED_LAYOUT_WITH_USER_DATASET = "dataset/layout/expected/updated-layout-with-user-expected.xml";
 
     @Test
     public void getAllLayouts() throws Exception {
@@ -70,6 +71,23 @@ public class BasicLayoutsTest extends AbstractBaseITCase {
                 .andExpect(status().isOk()).andReturn();
 
         assertDatasetWithNulls(EXPECTED_UPDATED_LAYOUT_DATASET, generateBeanValidator());
+    }
+
+    @Test
+    public void updateLayoutWithUSer() throws Exception {
+        new SimpleDatasetWithOperation(INIT_LAYOUT_DATASET, DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
+
+        String layoutReq=LayoutExtendedContentBuilder.aLayout()
+                .withCreator("1695b78b-7218-4e53-897b-51d29c250965")
+                .withName("testupdated")
+                .withSchema("divupdated")
+                .build();
+
+        getMockMvc().perform(
+                put(Constants._LAYOUT_URL+"/{uuid}", "5695b78b-7218-4e53-897b-51d29c250933").contentType(MediaType.APPLICATION_JSON).content(layoutReq))
+                .andExpect(status().isOk()).andReturn();
+
+        assertDatasetWithNulls(EXPECTED_UPDATED_LAYOUT_WITH_USER_DATASET, generateBeanValidator());
     }
 
     private List<AbstractTableValidatorBean> generateBeanValidator() {
