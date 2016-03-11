@@ -36,7 +36,6 @@ public class BasicLayoutsTest extends AbstractBaseITCase {
                 .andExpect(status().isOk()).andReturn();
 
         assertDatasetWithNulls(INIT_LAYOUT_EXPECTED_DATASET, generateBeanValidator());
-
     }
 
     @Test
