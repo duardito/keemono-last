@@ -14,8 +14,9 @@ public class Page extends AbstractDomain {
 
     public Page(){
         super();
-
     }
+
+
 
     @JoinColumn(name = "layout_id",referencedColumnName = "id")
     @OneToOne(fetch = FetchType.LAZY)
