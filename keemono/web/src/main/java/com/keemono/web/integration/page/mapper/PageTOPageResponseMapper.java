@@ -9,13 +9,14 @@ import org.springframework.stereotype.Component;
  * Created by edu on 01/01/2016.
  */
 @Component
-public class PageTOPageResponseMapper extends CustomBaseMapper<Page, PageResponse> {
+public class PageToPageResponseMapper extends CustomBaseMapper<Page, PageResponse> {
 
-    public PageTOPageResponseMapper(){
+    public PageToPageResponseMapper(){
         super();
         addField("layout.uuid", "layout.uuid");
         addField("layout.name", "layout.name");
         addField("layout.schema", "layout.schema");
+        addField("layout.creator.uuid", "layout.creator");
 
     }
 }

@@ -19,7 +19,8 @@ public class LayoutRepositoryImpl extends BaseRepository implements ILayoutRepos
 
     @Override
     public List<Layout> findAll(){
-        Criteria criteria = getSession().createCriteria(Layout.class).setFetchMode(Layout_.creator.getName(), FetchMode.JOIN);
+        Criteria criteria = getSession().createCriteria(Layout.class)
+                .setFetchMode(Layout_.creator.getName(), FetchMode.JOIN);
         return criteria.list();
     }
 
@@ -40,7 +41,8 @@ public class LayoutRepositoryImpl extends BaseRepository implements ILayoutRepos
 
     @Override
     public Layout findUUID(String uuid) {
-        Criteria criteria = getSession().createCriteria(Layout.class);
+        Criteria criteria = getSession().createCriteria(Layout.class)
+                .setFetchMode(Layout_.creator.getName(), FetchMode.JOIN);
         criteria.add(Restrictions.eq(Layout_.uuid.getName() ,uuid));
         Layout layout = (Layout) criteria.uniqueResult();
         return layout;

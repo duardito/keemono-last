@@ -2,6 +2,7 @@ package com.keemono.service.page.impl;
 
 import com.keemono.common.mapper.BaseMapper;
 import com.keemono.core.mysql.Repository.page.IPageRepository;
+import com.keemono.core.mysql.Repository.user.IUserRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.core.mysql.domain.page.Page;
 import com.keemono.service.layout.ILayoutService;
@@ -26,6 +27,9 @@ public class PageServiceImpl extends BaseMapper implements IPageService {
     @Autowired
     private ILayoutService layoutService;
 
+    @Autowired
+    private IUserRepository userRepository;
+
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = true)
     public List<Page> getAllPages() {
@@ -44,6 +48,7 @@ public class PageServiceImpl extends BaseMapper implements IPageService {
     public Page createPage(Page page) {
 
         Layout layout = layoutService.getLayoutByUUId(page.getLayout().getUuid());
+
         page.setLayout(layout);
         page = pageRepository.save(page);
         return page;
