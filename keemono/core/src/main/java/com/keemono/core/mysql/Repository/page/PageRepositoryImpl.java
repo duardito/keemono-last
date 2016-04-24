@@ -44,7 +44,7 @@ public class PageRepositoryImpl extends BaseRepository implements IPageRepositor
     @Override
     public Page findUUID(String uuid) {
         Criteria criteria = getSession().createCriteria(Page.class);
-        criteria.setFetchMode(Page_.layout.getName(), FetchMode.JOIN);
+        criteria.setFetchMode(Page_.layout.getName() +"."+ Layout_.creator.getName(), FetchMode.JOIN);
         criteria.add(Restrictions.eq(Page_.uuid.getName(), uuid));
         Page page = (Page) criteria.uniqueResult();
         return page;
