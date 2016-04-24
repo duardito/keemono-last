@@ -4,6 +4,7 @@ import com.keemono.core.mysql.Repository.BaseRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.core.mysql.domain.layout.Layout_;
 import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -18,7 +19,7 @@ public class LayoutRepositoryImpl extends BaseRepository implements ILayoutRepos
 
     @Override
     public List<Layout> findAll(){
-        Criteria criteria = getSession().createCriteria(Layout.class);
+        Criteria criteria = getSession().createCriteria(Layout.class).setFetchMode(Layout_.creator.getName(), FetchMode.JOIN);
         return criteria.list();
     }
 
