@@ -10,6 +10,18 @@ public class PageResponse extends AbstractResponse {
 
     private String name;
     private String url;
+    private String creator;
+
+    @Override
+    public String getCreator() {
+        return creator;
+    }
+
+    @Override
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
     private LayoutResponse layout;
 
     public LayoutResponse getLayout() {

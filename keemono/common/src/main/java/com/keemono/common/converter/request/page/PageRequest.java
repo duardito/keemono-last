@@ -11,6 +11,8 @@ public class PageRequest extends AbstractRequest {
 
     private String name;
 
+    private String creator;
+
     public String getLayout() {
         return layout;
     }
@@ -21,6 +23,14 @@ public class PageRequest extends AbstractRequest {
 
     public String getName() {
         return name;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
     }
 
     public void setName(String name) {
