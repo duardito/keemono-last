@@ -6,12 +6,11 @@ import com.keemono.core.mysql.domain.page.Page;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by edu on 01/01/2016.
+ * Created by edu on 24/04/2016.
  */
 @Component
-public class PageToPageResponseMapper extends CustomBaseMapper<Page, PageResponse> {
-
-    public PageToPageResponseMapper(){
+public class PageToPageRespMapper extends CustomBaseMapper<Page, PageResponse> {
+    public PageToPageRespMapper(){
         super();
         addField("layout.uuid", "layout.uuid");
         addField("layout.name", "layout.name");
