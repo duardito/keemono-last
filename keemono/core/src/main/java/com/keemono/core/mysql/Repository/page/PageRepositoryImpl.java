@@ -1,6 +1,7 @@
 package com.keemono.core.mysql.Repository.page;
 
 import com.keemono.core.mysql.Repository.BaseRepository;
+import com.keemono.core.mysql.domain.layout.Layout_;
 import com.keemono.core.mysql.domain.page.Page;
 import com.keemono.core.mysql.domain.page.Page_;
 import org.hibernate.Criteria;
@@ -15,24 +16,25 @@ import java.util.UUID;
  * Created by edu on 01/01/2016.
  */
 @Repository
-public class PageRepositoryImpl extends BaseRepository implements IPageRepository{
+public class PageRepositoryImpl extends BaseRepository implements IPageRepository {
 
     @Override
-    public List<Page> findAll(){
-        Criteria criteria = getSession().createCriteria(Page.class);
-		criteria.setFetchMode(Page_.layout.getName(), FetchMode.JOIN);
+    public List<Page> findAll() {
+        Criteria criteria = getSession().createCriteria(Page.class)
+                .setFetchMode(Page_.layout.getName(), FetchMode.JOIN)
+                .setFetchMode(Page_.layout.getName() +"."+ Layout_.creator.getName(), FetchMode.JOIN);
         return criteria.list();
     }
 
     @Override
-    public Page update(Page page){
+    public Page update(Page page) {
         getSession().update(page);
         getSession().flush();
         return page;
     }
 
     @Override
-    public Page save(Page page){
+    public Page save(Page page) {
         page.setUuid(UUID.randomUUID().toString());
         getSession().save(page);
         getSession().flush();
@@ -43,7 +45,7 @@ public class PageRepositoryImpl extends BaseRepository implements IPageRepositor
     public Page findUUID(String uuid) {
         Criteria criteria = getSession().createCriteria(Page.class);
         criteria.setFetchMode(Page_.layout.getName(), FetchMode.JOIN);
-        criteria.add(Restrictions.eq(Page_.uuid.getName() ,uuid));
+        criteria.add(Restrictions.eq(Page_.uuid.getName(), uuid));
         Page page = (Page) criteria.uniqueResult();
         return page;
     }

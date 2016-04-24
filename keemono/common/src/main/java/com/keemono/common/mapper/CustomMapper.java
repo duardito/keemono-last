@@ -16,6 +16,11 @@ import java.util.Map;
 /**
  * Created by edu on 11/10/2015.
  */
+
+/**
+ * implementing ApplicationContextAware exposes all mapper classes to spring context
+ * ConfigurableMapper gives us ability to add all mappers in mapperfactory
+ */
 @Component
 public class CustomMapper extends ConfigurableMapper implements ApplicationContextAware {
 

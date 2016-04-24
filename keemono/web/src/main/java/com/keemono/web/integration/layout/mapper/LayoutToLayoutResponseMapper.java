@@ -9,5 +9,10 @@ import org.springframework.stereotype.Component;
  * Created by edu on 25/10/2015.
  */
 @Component
-public class LayoutDtoToLayoutResponseMapper extends CustomBaseMapper<Layout, LayoutResponse> {
+public class LayoutToLayoutResponseMapper extends CustomBaseMapper<Layout, LayoutResponse> {
+
+    public LayoutToLayoutResponseMapper(){
+        super();
+        addField("creator.uuid","creator");
+    }
 }
