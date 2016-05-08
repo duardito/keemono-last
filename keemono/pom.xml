@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
     <version>${keemono.project.version}</version>
 
-	
     <properties>
         <keemono.project.version>1.0-SNAPSHOT</keemono.project.version>
         <!--INIT : SPRING DEPENDENCIES -->
