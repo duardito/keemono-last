@@ -34,7 +34,7 @@ public class BasicPageTest  extends AbstractBaseITCase {
         assertDatasetWithNulls("dataset/page/expected/basic-data-page-expected.xml", generateBeanValidator());
     }
 
-    @Test
+   // @Test
     public void createPage() throws Exception {
 
         String content = PageContentBuilder.aPage()
