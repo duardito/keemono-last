@@ -5,6 +5,7 @@ import com.keemono.core.mysql.Repository.page.IPageRepository;
 import com.keemono.core.mysql.Repository.user.IUserRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.core.mysql.domain.page.Page;
+import com.keemono.core.mysql.domain.user.User;
 import com.keemono.service.layout.ILayoutService;
 import com.keemono.service.page.IPageService;
 
@@ -48,8 +49,10 @@ public class PageServiceImpl extends BaseMapper implements IPageService {
     public Page createPage(Page page) {
 
         Layout layout = layoutService.getLayoutByUUId(page.getLayout().getUuid());
+        User user = userRepository.findOne(page.getCreator().getUuid());
 
         page.setLayout(layout);
+        page.setCreator(user);
         page = pageRepository.save(page);
         return page;
     }

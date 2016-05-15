@@ -21,7 +21,7 @@ public class PageContentBuilder extends ContentBuilder {
         return this;
     }
 
-    public PageContentBuilder withCreator(Integer creator) {
+    public PageContentBuilder withCreator(String creator) {
         content.append(ContentBuilder.createKeyValue("creator", creator));
         return this;
     }
