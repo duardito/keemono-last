@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="true" scan="true" scanPeriod="10 seconds">
+	<timestamp key="byDay" datePattern="yyyyMMdd'T'HHmmss"/>
+
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
 		<encoder>
-			<pattern>
-				pepe %d{HH:mm:ss.SSS} [%thread] %-5level - %logger{20} - %msg%n
-			</pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 		</encoder>
 	</appender>
-	<!-- <appender name="STDOUT-QUERY" class="ch.qos.logback.core.ConsoleAppender"> -->
-	<!-- <encoder> -->
-	<!-- <pattern> -->
-	<!-- %d{HH:mm:ss.SSS} [%thread] %-5level [Hibernate] - %msg%n -->
-	<!-- </pattern> -->
-	<!-- </encoder> -->
-	<!-- </appender> -->
 
-	<root level="ERROR">
+	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
+		<file>/usr/local/tomcat/logs/keemonoLog-${byDay}.txt </file>
+		<append>true</append>
+		<encoder>
+			<pattern>%-4relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<root level="INFO">
+		<appender-ref ref="FILE" />
 		<appender-ref ref="STDOUT" />
 	</root>
+
 	<logger name="org.springframework" level="INFO" additivity="false">
 		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
 	</logger>
+
+
+
+
 <!--
 	<logger name="org.hibernate.sql" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />

@@ -646,8 +646,8 @@
             </activation>
             <properties>
                 <flyway.url>jdbc:mysql://46.4.112.248:10001/keemonotest?UseUnicode=true&amp;characterEncoding=utf8&amp;default_schema=true</flyway.url>
-                <flyway.user>root</flyway.user>
-                <flyway.passwd>root</flyway.passwd>
+                <flyway.user>keemono</flyway.user>
+                <flyway.passwd>keemono</flyway.passwd>
             </properties>
         </profile>
         <profile>

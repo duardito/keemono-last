@@ -7,6 +7,6 @@
     <layout id="2" name="test2" data="div1" uuid="4695b78b-7218-4e53-897b-51d29c250911" />
     <layout id="3" name="test3" data="div1" uuid="5695b78b-7218-4e53-897b-51d29c250933" />
 
-    <page name="pagina 1" layout_id="1"/>
+    <page name="pagina 1" layout_id="1" user_id="1"/>
 
 </dataset>

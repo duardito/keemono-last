@@ -19,7 +19,6 @@ public class User extends AbstractDomain {
 
     public User(){
         super();
-
     }
 
     @OneToMany

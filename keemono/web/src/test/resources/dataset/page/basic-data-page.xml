@@ -7,9 +7,9 @@
     <layout id="2" name="test2" data="div1" uuid="4695b78b-7218-4e53-897b-51d29c250911" />
     <layout id="3" name="test3" data="div1" uuid="5695b78b-7218-4e53-897b-51d29c250933" />
 
-    <page id="1" name="pagina 1" layout_id="1" uuid="4695b78b-7218-4e53-897b-51d29c250912"/>
-    <page id="2" name="pagina 2" layout_id="2" uuid="4695b78b-7218-4e53-897b-51d29c250913"/>
-    <page id="3" name="pagina 3" layout_id="3" uuid="4695b78b-7218-4e53-897b-51d29c250914"/>
-    <page id="4" name="pagina 4" layout_id="3" uuid="4695b78b-7218-4e53-897b-51d29c250915"/>
+    <page id="1" name="pagina 1" layout_id="1" uuid="4695b78b-7218-4e53-897b-51d29c250912" user_id="1"/>
+    <page id="2" name="pagina 2" layout_id="2" uuid="4695b78b-7218-4e53-897b-51d29c250913" user_id="1"/>
+    <page id="3" name="pagina 3" layout_id="3" uuid="4695b78b-7218-4e53-897b-51d29c250914" user_id="1"/>
+    <page id="4" name="pagina 4" layout_id="3" uuid="4695b78b-7218-4e53-897b-51d29c250915" user_id="1"/>
 
-</dataset>
+        </dataset>

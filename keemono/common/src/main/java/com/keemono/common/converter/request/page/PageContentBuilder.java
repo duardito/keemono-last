@@ -20,4 +20,9 @@ public class PageContentBuilder extends ContentBuilder {
         content.append(ContentBuilder.createKeyValue("layout", layout));
         return this;
     }
+
+    public PageContentBuilder withCreator(String creator) {
+        content.append(ContentBuilder.createKeyValue("creator", creator));
+        return this;
+    }
 }
