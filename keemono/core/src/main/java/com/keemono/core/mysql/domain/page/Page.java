@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Page extends AbstractDomain {
 
     public Page(){
-        super();
+        super(Page.class.getName());
     }
 
     @JoinColumn(name = "layout_id",referencedColumnName = "id")

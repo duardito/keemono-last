@@ -10,14 +10,18 @@ import java.util.UUID;
 @MappedSuperclass
 public abstract class AbstractDomain implements Serializable {
 
+    public AbstractDomain(String className) {
+        this.setUuid(className + uuid);
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name",nullable = false,length = 255)
+    @Column(name = "name", nullable = false, length = 255)
     private String name;
 
-    @Column(name = "uuid", nullable = false,length = 36)
+    @Column(name = "uuid", nullable = false, length = 36)
     private String uuid;
 
     public Long getId() {
@@ -38,7 +42,7 @@ public abstract class AbstractDomain implements Serializable {
 
     public String getUuid() {
 
-        if(uuid == null){
+        if (uuid == null) {
             return UUID.randomUUID().toString();
         }
         return uuid;

@@ -18,7 +18,7 @@ import java.util.List;
 public class User extends AbstractDomain {
 
     public User(){
-        super();
+        super(User.class.getName());
     }
 
     @OneToMany
