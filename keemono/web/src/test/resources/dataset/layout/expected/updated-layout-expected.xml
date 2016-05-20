@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <user id="1" email="edu@gmail.com" lastName="frades" name="edu"  uuid="1695b78b-7218-4e53-897b-51d29c250965"/>
-    <user id="2" email="juan@gmail.com" lastName="perez" name="juan"  uuid="2695b78b-7218-4e53-897b-51d29c250912"/>
+    <user id="1" email="edu@gmail.com" lastName="frades" name="edu"  uuid="user:1695b78b-7218-4e53-897b-51d29c250965"/>
+    <user id="2" email="juan@gmail.com" lastName="perez" name="juan"  uuid="user:2695b78b-7218-4e53-897b-51d29c250912"/>
 
-    <layout  name="test1" data="&lt;div1/&gt;" user_id="1" uuid="3695b78b-7218-4e53-897b-51d29c250912"/>
-    <layout  name="test2" data="div1" uuid="4695b78b-7218-4e53-897b-51d29c250911" />
-    <layout  name="testupdated" data="divupdated" uuid="5695b78b-7218-4e53-897b-51d29c250933" />
+    <layout  name="test1" data="&lt;div1/&gt;" user_id="1" uuid="layout:3695b78b-7218-4e53-897b-51d29c250912"/>
+    <layout  name="test2" data="div1" uuid="layout:4695b78b-7218-4e53-897b-51d29c250911" />
+    <layout  name="testupdated" data="divupdated" uuid="layout:5695b78b-7218-4e53-897b-51d29c250933" />
 
 
 </dataset>

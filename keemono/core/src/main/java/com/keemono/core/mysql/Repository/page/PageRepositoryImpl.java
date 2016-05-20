@@ -35,7 +35,7 @@ public class PageRepositoryImpl extends BaseRepository implements IPageRepositor
 
     @Override
     public Page save(Page page) {
-        page.setUuid(UUID.randomUUID().toString());
+        page.setUuid("page:"+ UUID.randomUUID().toString());
         getSession().save(page);
         getSession().flush();
         return page;

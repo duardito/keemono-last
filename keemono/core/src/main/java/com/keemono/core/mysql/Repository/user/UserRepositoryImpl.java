@@ -7,6 +7,8 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 /**
  * Created by edu on 01/11/2015.
  */
@@ -18,6 +20,14 @@ public class UserRepositoryImpl extends BaseRepository implements IUserRepositor
         Criteria criteria = getSession().createCriteria(User.class);
         criteria.add(Restrictions.eq(User_.uuid.getName(), uuid));
         User user = (User) criteria.uniqueResult();
+        return user;
+    }
+
+    @Override
+    public User save(User user) {
+        user.setUuid("user:"+ UUID.randomUUID().toString());
+        getSession().save(user);
+        getSession().flush();
         return user;
     }
 }

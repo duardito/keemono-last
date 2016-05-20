@@ -39,8 +39,8 @@ public class BasicPageTest  extends AbstractBaseITCase {
 
         String content = PageContentBuilder.aPage()
                 .withName("pagina 1")
-                .withLayout("3695b78b-7218-4e53-897b-51d29c250912")
-                .withCreator("1695b78b-7218-4e53-897b-51d29c250965")
+                .withLayout("layout:3695b78b-7218-4e53-897b-51d29c250912")
+                .withCreator("user:1695b78b-7218-4e53-897b-51d29c250965")
                 .build();
 
         new  SimpleDatasetWithOperation(INIT_PAGE_DATASET, DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
