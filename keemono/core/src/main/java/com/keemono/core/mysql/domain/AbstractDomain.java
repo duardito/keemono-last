@@ -11,7 +11,7 @@ import java.util.UUID;
 public abstract class AbstractDomain implements Serializable {
 
     public AbstractDomain(String className) {
-        this.setUuid(className + uuid);
+        this.setUuid(uuid = className+":"+uuid);
     }
 
     @Id

@@ -1,7 +1,7 @@
-package com.keemono.core.mysql.Repository.layout;
+package com.keemono.core.mysql.Repository.division;
 
 import com.keemono.core.mysql.Repository.BaseRepository;
-import com.keemono.core.mysql.domain.layout.Layout;
+import com.keemono.core.mysql.domain.division.Division;
 import com.keemono.core.mysql.domain.layout.Layout_;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -15,36 +15,36 @@ import java.util.UUID;
  * Created by edu on 31/10/2015.
  */
 @Repository
-public class LayoutRepositoryImpl extends BaseRepository implements ILayoutRepository {
+public class DivisionRepositoryImpl extends BaseRepository implements IDivisionRepository {
 
     @Override
-    public List<Layout> findAll(){
-        Criteria criteria = getSession().createCriteria(Layout.class)
+    public List<Division> findAll(){
+        Criteria criteria = getSession().createCriteria(Division.class)
                 .setFetchMode(Layout_.creator.getName(), FetchMode.JOIN);
         return criteria.list();
     }
 
     @Override
-    public Layout update(Layout layout){
+    public Division update(Division layout){
         getSession().update(layout);
         getSession().flush();
         return layout;
     }
 
     @Override
-    public Layout save(Layout layout){
-        layout.setUuid("layout:"+UUID.randomUUID().toString());
-        getSession().save(layout);
+    public Division save(Division division){
+        division.setUuid("division:"+UUID.randomUUID().toString());
+        getSession().save(division);
         getSession().flush();
-        return layout;
+        return division;
     }
 
     @Override
-    public Layout findUUID(String uuid) {
-        Criteria criteria = getSession().createCriteria(Layout.class)
+    public Division findUUID(String uuid) {
+        Criteria criteria = getSession().createCriteria(Division.class)
                 .setFetchMode(Layout_.creator.getName(), FetchMode.JOIN);
         criteria.add(Restrictions.eq(Layout_.uuid.getName() ,uuid));
-        Layout layout = (Layout) criteria.uniqueResult();
+        Division layout = (Division) criteria.uniqueResult();
         return layout;
     }
 

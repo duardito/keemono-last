@@ -10,4 +10,6 @@ import java.io.Serializable;
 public interface IUserRepository<M, S extends Serializable>{
 
     User findOne(String uuid);
+
+    User save(User user);
 }
