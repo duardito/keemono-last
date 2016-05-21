@@ -2,8 +2,6 @@ package com.keemono.web.integration.layout;
 
 import com.keemono.common.Constants;
 import com.keemono.common.converter.request.layout.LayoutCreateRequest;
-import com.keemono.common.converter.request.layout.LayoutExtendedRequest;
-import com.keemono.common.converter.request.layout.LayoutRequest;
 import com.keemono.common.converter.response.layout.LayoutResponse;
 import com.keemono.common.converter.response.layout.ListLayoutResponse;
 import com.keemono.common.mapper.BaseMapper;
@@ -36,11 +34,11 @@ public class LayoutController extends BaseMapper {
 
     @ApiOperation(value = "create a layout", notes = "create a layout", response = LayoutResponse.class)
     @ResponseStatus(value = HttpStatus.CREATED)
-    @RequestMapping( method = RequestMethod.POST, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
+    @RequestMapping(method = RequestMethod.POST, produces = Constants._APPLICATION_JSON, consumes = Constants._APPLICATION_JSON)
     public LayoutResponse createLayout(@ApiParam(value = "basic data to create layout", required = true)
-                                           @RequestBody  @Valid final LayoutCreateRequest layoutCreateRequest) throws Exception {
+                                       @RequestBody @Valid final LayoutCreateRequest layoutCreateRequest) throws Exception {
 
-        Layout layout = mapper.map(layoutCreateRequest,Layout.class);
+        Layout layout = mapper.map(layoutCreateRequest, Layout.class);
 
         layout = layoutService.createLayout(layout);
 
@@ -48,12 +46,12 @@ public class LayoutController extends BaseMapper {
     }
 
     @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
-    @ApiOperation(value = "get a layout", notes = "get all layout list",response =ListLayoutResponse.class )
+    @ApiOperation(value = "get a layout", notes = "get all layout list", response = ListLayoutResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping( method = RequestMethod.GET, produces = Constants._APPLICATION_JSON )
-    public ListLayoutResponse getLayouts(@ModelAttribute @Valid final PaginationRequest paginationRequest,@Valid final OrdinationRequest ordinationRequest){
+    @RequestMapping(value = Constants._LIST, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
+    public ListLayoutResponse getLayouts(@ModelAttribute @Valid final PaginationRequest paginationRequest, @Valid final OrdinationRequest ordinationRequest) {
 
-        final List <Layout> lista = layoutService.getAllLayoutList();
+        final List<Layout> lista = layoutService.getAllLayoutList();
 
         final ListLayoutResponse listLayoutResponse = new ListLayoutResponse();
         List<LayoutResponse> out = mapper.mapAsList(lista, LayoutResponse.class);
@@ -62,15 +60,15 @@ public class LayoutController extends BaseMapper {
         return listLayoutResponse;
     }
 
-    @ApiOperation(value = "update a layout", notes = "update a layout",response =LayoutResponse.class )
+    @ApiOperation(value = "update a layout", notes = "update a layout", response = LayoutResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping(value = "/{uuid}" ,method = RequestMethod.PUT, produces = Constants._APPLICATION_JSON,consumes = Constants._APPLICATION_JSON)
-    public LayoutResponse updateLayout(@ApiParam( value = "layout identifier by its uuid", required = true) @PathVariable String uuid,
-                                       @ApiParam( value = "basic data to update layout", required = true) @RequestBody  @Valid final LayoutCreateRequest layoutRequest){
+    @RequestMapping(value = "/{uuid}", method = RequestMethod.PUT, produces = Constants._APPLICATION_JSON, consumes = Constants._APPLICATION_JSON)
+    public LayoutResponse updateLayout(@ApiParam(value = "layout identifier by its uuid", required = true) @PathVariable String uuid,
+                                       @ApiParam(value = "basic data to update layout", required = true) @RequestBody @Valid final LayoutCreateRequest layoutRequest) {
 
-        Layout layoutDto = mapper.map(layoutRequest,Layout.class);
+        Layout layoutDto = mapper.map(layoutRequest, Layout.class);
 
-        layoutDto =layoutService.updateLayout(layoutDto, uuid);
+        layoutDto = layoutService.updateLayout(layoutDto, uuid);
         return mapper.map(layoutDto, LayoutResponse.class);
     }
 

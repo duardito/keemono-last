@@ -8,4 +8,6 @@
     <layout  name="test3" data="div1" uuid="layout:5695b78b-7218-4e53-897b-51d29c250933" />
     <layout  name="test4" data="&lt;div35/&gt;" user_id="1"/>
 
+    <zcontent/>
+
 </dataset>

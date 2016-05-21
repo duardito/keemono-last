@@ -1,4 +1,4 @@
-CREATE TABLE `Content` (
+CREATE TABLE `zcontent` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `uuid` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NULL,
@@ -22,7 +22,7 @@ ADD INDEX `fk_division_content_idx` (`content_id` ASC);
 ALTER TABLE .`division`
 ADD CONSTRAINT `fk_division_content`
   FOREIGN KEY (`content_id`)
-  REFERENCES `Content` (`id`)
+  REFERENCES `zcontent` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 
@@ -43,7 +43,7 @@ CHANGE COLUMN `content_id` `content_id` BIGINT(20) UNSIGNED NULL ;
 ALTER TABLE `division`
 ADD CONSTRAINT `fk_division_content`
   FOREIGN KEY (`content_id`)
-  REFERENCES `Content` (`id`)
+  REFERENCES `zcontent` (`id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
 

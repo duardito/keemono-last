@@ -2,8 +2,6 @@ package com.keemono.web.integration.page;
 
 import com.keemono.common.Constants;
 import com.keemono.common.converter.request.page.PageRequest;
-import com.keemono.common.converter.response.layout.LayoutResponse;
-import com.keemono.common.converter.response.layout.ListLayoutResponse;
 import com.keemono.common.converter.response.page.ListPageResponse;
 import com.keemono.common.converter.response.page.PageResponse;
 import com.keemono.common.mapper.BaseMapper;
@@ -18,9 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by edu on 25/04/2015.
@@ -71,7 +68,7 @@ public class PageController extends BaseMapper {
     
     @ApiOperation(value = "get all pages", notes = "get all pages list", response = ListPageResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
-    @RequestMapping(method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
+    @RequestMapping(value = Constants._LIST,method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
     public ListPageResponse getPages(@ModelAttribute @Valid final PaginationRequest paginationRequest,@Valid final OrdinationRequest ordinationRequest){
     	List<Page> pages = pageService.getAllPages();
     	

@@ -29,7 +29,7 @@ public class BasicPageTest  extends AbstractBaseITCase {
         new SimpleDatasetWithOperation("dataset/page/basic-data-page.xml", DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
 
         getMockMvc().perform(
-                get(Constants._PAGE_URL).contentType(MediaType.APPLICATION_JSON))
+                get(Constants._PAGE_URL+ Constants._LIST).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn();
         assertDatasetWithNulls("dataset/page/expected/basic-data-page-expected.xml", generateBeanValidator());
     }

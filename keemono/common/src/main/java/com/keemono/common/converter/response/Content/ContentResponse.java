@@ -1,4 +1,4 @@
-package com.keemono.common.converter.response.layout;
+package com.keemono.common.converter.response.Content;
 
 import com.keemono.common.converter.base.AbstractResponse;
 import com.keemono.common.converter.response.user.UserResponse;
@@ -6,16 +6,13 @@ import com.wordnik.swagger.annotations.ApiModel;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
 /**
- * Created by edu on 10/05/2015.
+ * Created by edu on 21/05/2016.
  */
-@ApiModel(value = "response" , description = "layout response")
-public class LayoutResponse extends AbstractResponse {
+@ApiModel(value = "response" , description = "content response")
+public class ContentResponse extends AbstractResponse {
 
-    @ApiModelProperty(value = "layout name", required = true)
     private String name;
-
-    @ApiModelProperty(value = "layout html data", required = true)
-    private String schema;
+    private String content;
 
     @ApiModelProperty(value = "creator", required = true)
     private UserResponse creator;
@@ -28,14 +25,6 @@ public class LayoutResponse extends AbstractResponse {
         this.creator = creator;
     }
 
-    public String getSchema() {
-        return schema;
-    }
-
-    public void setSchema(String schema) {
-        this.schema = schema;
-    }
-
     public String getName() {
         return name;
     }
@@ -43,4 +32,13 @@ public class LayoutResponse extends AbstractResponse {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
 }

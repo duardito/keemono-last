@@ -7,5 +7,5 @@
     <layout  name="test2" data="div1" uuid="layout:4695b78b-7218-4e53-897b-51d29c250911" />
     <layout  name="testupdated" data="divupdated" uuid="layout:5695b78b-7218-4e53-897b-51d29c250933" user_id="1"/>
 
-
+    <zcontent/>
 </dataset>
