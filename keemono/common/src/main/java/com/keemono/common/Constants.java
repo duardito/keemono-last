@@ -8,6 +8,8 @@ public final class Constants {
     //mapping url
     public static final String _PAGE_URL ="/page";
     public static final String _LAYOUT_URL ="/layout";
+    public static final String _CONTENT_URL ="/content";
+    public static final String _LIST ="/list";
     //path variables
     public static final String _UUID ="{uuid}";
 

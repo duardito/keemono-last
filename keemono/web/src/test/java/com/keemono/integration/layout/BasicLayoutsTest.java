@@ -32,7 +32,7 @@ public class BasicLayoutsTest extends AbstractBaseITCase {
         new SimpleDatasetWithOperation(INIT_LAYOUT_DATASET, DatabaseOperation.CLEAN_INSERT).executeOperation(databaseConnection);
 
         getMockMvc().perform(
-                get(Constants._LAYOUT_URL).contentType(MediaType.APPLICATION_JSON))
+                get(Constants._LAYOUT_URL + Constants._LIST).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk()).andReturn();
 
         assertDatasetWithNulls(INIT_LAYOUT_EXPECTED_DATASET, generateBeanValidator());
