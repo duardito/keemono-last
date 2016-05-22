@@ -12,4 +12,6 @@ public interface IUserRepository<M, S extends Serializable>{
     User findOne(String uuid);
 
     User save(User user);
+
+    User findByUsername(String username);
 }

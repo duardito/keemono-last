@@ -45,7 +45,8 @@ public class LayoutController extends BaseMapper {
         return mapper.map(layout, LayoutResponse.class);
     }
 
-    @PreAuthorize(value = "hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("@securityService.hasProtectedAccess()")
     @ApiOperation(value = "get a layout", notes = "get all layout list", response = ListLayoutResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = Constants._LIST, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)

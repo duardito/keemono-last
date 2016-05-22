@@ -67,6 +67,8 @@
         <sonar.jacoco.itReportPath>${project.basedir}/target/jacoco-it.exec</sonar.jacoco.itReportPath>
         <sonar.language>java</sonar.language>
 
+        <jjwt.version>0.4</jjwt.version>
+
     </properties>
 
     <modules>
@@ -79,8 +81,23 @@
     </modules>
 
     <dependencyManagement>
-
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.mobile</groupId>
+                <artifactId>spring-mobile-device</artifactId>
+                <version>LATEST</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth</groupId>
+                <artifactId>spring-security-oauth2</artifactId>
+                <version>2.0.9.RELEASE</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.data</groupId>

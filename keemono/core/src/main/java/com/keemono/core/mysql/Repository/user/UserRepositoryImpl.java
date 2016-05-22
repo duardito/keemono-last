@@ -30,4 +30,12 @@ public class UserRepositoryImpl extends BaseRepository implements IUserRepositor
         getSession().flush();
         return user;
     }
+
+    @Override
+    public User findByUsername(String username) {
+        Criteria criteria = getSession().createCriteria(User.class);
+        criteria.add(Restrictions.eq(User_.username.getName(), username));
+        User user = (User) criteria.uniqueResult();
+        return user;
+    }
 }

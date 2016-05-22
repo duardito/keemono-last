@@ -1,6 +1,6 @@
 package com.keemono.web.init;
 
-import com.keemono.security.WebSecurity;
+import com.keemono.security.WebSecurityConfiguration;
 import com.keemono.web.WebConfiguration;
 import com.keemono.web.filters.SimpleCORSFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -17,7 +17,7 @@ public class WebInitContext extends
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[]{WebConfiguration.class, WebSecurity.class};
+        return new Class<?>[]{WebConfiguration.class, WebSecurityConfiguration.class};
     }
 
     @Override

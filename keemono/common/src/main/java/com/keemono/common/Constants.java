@@ -10,6 +10,7 @@ public final class Constants {
     public static final String _LAYOUT_URL ="/layout";
     public static final String _CONTENT_URL ="/content";
     public static final String _LIST ="/list";
+    public static final String _AUTH ="/auth";
     //path variables
     public static final String _UUID ="{uuid}";
 

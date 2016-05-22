@@ -92,9 +92,14 @@ public class BasicLayoutsTest extends AbstractBaseITCase {
     private List<AbstractTableValidatorBean> generateBeanValidator() {
         List<AbstractTableValidatorBean> tablesBeans = new ArrayList<AbstractTableValidatorBean>(0);
         String[] layout = {"id", "uuid"};
-        String[] user = {"id", "uuid"};
+        String[] user = {"id", "uuid" , "lastPasswordReset", "authorities", "username" , "password"};
         tablesBeans.add(new AbstractTableValidatorBean("layout", layout));
         tablesBeans.add(new AbstractTableValidatorBean("user", user));
+
+        /*
+        Expected :[email, lastName, name]
+Actual   :[authorities, email, lastname, name, password, username]
+         */
 
         return tablesBeans;
     }

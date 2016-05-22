@@ -54,7 +54,7 @@ public class BasicPageTest  extends AbstractBaseITCase {
         List<AbstractTableValidatorBean> tablesBeans = new ArrayList<AbstractTableValidatorBean>(0);
 
         String[] layout = { "id", "uuid"};
-        String[] user = { "id", "uuid"};
+        String[] user = {"id", "uuid" , "lastPasswordReset", "authorities", "username" , "password"};
         String[] page = { "id", "uuid"};
         tablesBeans.add(new AbstractTableValidatorBean("layout", layout));
         tablesBeans.add(new AbstractTableValidatorBean("user", user));
