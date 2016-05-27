@@ -1,6 +1,5 @@
 package com.keemono.web.init;
 
-import com.keemono.security.WebSecurityConfiguration;
 import com.keemono.web.WebConfiguration;
 import com.keemono.web.filters.SimpleCORSFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -30,8 +29,11 @@ public class WebInitContext extends
         return new String[] {"/" };
     }
 
+
     @Override
-    protected Filter[] getServletFilters() {
+    protected Filter[] getServletFilters()   {
+
+        AuthenticationTokenFilter authenticationTokenFilter = new AuthenticationTokenFilter();
 
         final SimpleCORSFilter simpleCORSFilter = new SimpleCORSFilter();
         final CharacterEncodingFilter characterEncodingFilter =
@@ -39,6 +41,11 @@ public class WebInitContext extends
         characterEncodingFilter.setEncoding(StandardCharsets.UTF_8.name());
         characterEncodingFilter.setForceEncoding(true);
 
-        return new Filter[] {simpleCORSFilter ,characterEncodingFilter };
+        try {
+            return new Filter[] {authenticationTokenFilter,simpleCORSFilter ,characterEncodingFilter };
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

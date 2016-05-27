@@ -13,5 +13,5 @@ public interface IUserRepository<M, S extends Serializable>{
 
     User save(User user);
 
-    User findByUsername(String username);
+    User findByUsername(String username) throws Exception;
 }

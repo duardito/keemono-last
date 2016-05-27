@@ -1,7 +1,5 @@
 package com.keemono.core.mysql.domain;
 
-import org.apache.commons.lang.builder.ReflectionToStringBuilder;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
@@ -54,8 +52,4 @@ public abstract class AbstractDomain implements Serializable {
         this.uuid = uuid;
     }
 
-    @Override
-    public String toString() {
-        return ReflectionToStringBuilder.toString(this);
-    }
 }

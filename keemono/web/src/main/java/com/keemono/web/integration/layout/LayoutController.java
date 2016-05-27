@@ -14,6 +14,8 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -39,12 +41,14 @@ public class LayoutController extends BaseMapper {
 
         Layout layout = mapper.map(layoutCreateRequest, Layout.class);
 
+
+
         layout = layoutService.createLayout(layout);
 
         return mapper.map(layout, LayoutResponse.class);
     }
 
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     //@PreAuthorize("@securityService.hasProtectedAccess()")
     @ApiOperation(value = "get a layout", notes = "get all layout list", response = ListLayoutResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
@@ -52,6 +56,8 @@ public class LayoutController extends BaseMapper {
     public ListLayoutResponse getLayouts(@ModelAttribute @Valid final PaginationRequest paginationRequest, @Valid final OrdinationRequest ordinationRequest) {
 
         final List<Layout> lista = layoutService.getAllLayoutList();
+
+        SecurityContextHolder.getContext().getAuthentication();
 
         final ListLayoutResponse listLayoutResponse = new ListLayoutResponse();
         List<LayoutResponse> out = mapper.mapAsList(lista, LayoutResponse.class);

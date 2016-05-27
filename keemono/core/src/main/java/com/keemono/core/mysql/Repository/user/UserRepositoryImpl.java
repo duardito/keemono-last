@@ -32,10 +32,17 @@ public class UserRepositoryImpl extends BaseRepository implements IUserRepositor
     }
 
     @Override
-    public User findByUsername(String username) {
+    public User findByUsername(String username) throws Exception {
         Criteria criteria = getSession().createCriteria(User.class);
         criteria.add(Restrictions.eq(User_.username.getName(), username));
-        User user = (User) criteria.uniqueResult();
-        return user;
+        try {
+            User user = (User) criteria.uniqueResult();
+            return user;
+        }catch (Exception e){
+            System.out.println(e.getCause());
+            throw new Exception(e);
+        }
+
+
     }
 }

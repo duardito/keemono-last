@@ -4,7 +4,7 @@ import com.keemono.configuration.CommonConfiguration;
 import com.keemono.configuration.PersistenceConfiguration;
 import com.keemono.configuration.ServiceConfiguration;
 import com.keemono.core.mysql.configuration.MysqlConfiguration;
-import com.keemono.security.WebSecurityConfiguration;
+import com.keemono.web.init.WebSecurityConfiguration;
 import com.keemono.web.config.WebMvcConfig;
 import com.keemono.web.swagger.SwaggerConfiguration;
 import org.springframework.context.annotation.*;
@@ -17,8 +17,8 @@ import org.springframework.context.annotation.*;
                 @PropertySource("classpath:config/init.properties"),
                 @PropertySource(value = "classpath:config/test.properties",ignoreResourceNotFound = true)
                 })
-@ComponentScan(basePackages = {"com.keemono.web","com.keemono.common","com.keemono.service"} )
-@Import({WebSecurityConfiguration.class,WebMvcConfig.class, MysqlConfiguration.class,PersistenceConfiguration.class, ServiceConfiguration.class,  CommonConfiguration.class, SwaggerConfiguration.class})
+@ComponentScan(basePackages = {"com.keemono.web","com.keemono.common","com.keemono.service","com.keemono.security"} )
+@Import({WebMvcConfig.class,WebSecurityConfiguration.class, MysqlConfiguration.class,PersistenceConfiguration.class, ServiceConfiguration.class,  CommonConfiguration.class, SwaggerConfiguration.class})
 @Configuration
 public class WebConfiguration {
 

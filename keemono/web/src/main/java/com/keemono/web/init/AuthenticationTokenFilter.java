@@ -1,5 +1,6 @@
-package com.keemono.security;
+package com.keemono.web.init;
 
+import com.keemono.security.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +20,7 @@ import java.io.IOException;
 /**
  * Created by edu on 22/05/2016.
  */
+
 public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFilter {
 
     @Autowired
@@ -33,10 +35,12 @@ public class AuthenticationTokenFilter extends UsernamePasswordAuthenticationFil
     @Autowired
     private UserDetailsService userDetailsService;
 
+
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
-        String tokenHeader = env.getProperty("cerberus.token.header");
+        String tokenHeader = "api_key";
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String authToken = httpRequest.getHeader(tokenHeader);
