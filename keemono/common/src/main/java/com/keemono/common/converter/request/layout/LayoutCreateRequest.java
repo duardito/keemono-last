@@ -1,6 +1,7 @@
 package com.keemono.common.converter.request.layout;
 
-import com.wordnik.swagger.annotations.ApiModel;
+
+import io.swagger.annotations.ApiModel;
 
 /**
  * Created by edu on 08/03/2016.

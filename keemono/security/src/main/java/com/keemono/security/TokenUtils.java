@@ -1,5 +1,6 @@
 package com.keemono.security;
 
+import com.keemono.security.factory.CerberusUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

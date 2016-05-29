@@ -1,6 +1,7 @@
 package com.keemono.common.converter.base;
 
-import com.wordnik.swagger.annotations.ApiModelProperty;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Created by edu on 25/04/2015.
