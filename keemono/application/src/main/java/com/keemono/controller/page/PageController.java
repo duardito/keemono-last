@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,6 +23,7 @@ import java.util.List;
 /**
  * Created by edu on 25/04/2015.
  */
+@PreAuthorize("@securityService.hasProtectedAccess()")
 @Api(value = "/page", description = "Operations to do about a page")
 @RequestMapping(value = Constants._PAGE_URL)
 @RestController

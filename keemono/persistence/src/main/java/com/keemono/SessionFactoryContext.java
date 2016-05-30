@@ -1,4 +1,4 @@
-package com.keemono.configuration.mysql;
+package com.keemono;
 
 import com.keemono.core.mysql.configuration.MysqlConfiguration;
 import com.mchange.v2.c3p0.ComboPooledDataSource;

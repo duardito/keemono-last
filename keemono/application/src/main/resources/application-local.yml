@@ -1,6 +1,6 @@
 # EMBEDDED SERVER CONFIGURATION
 server:
-  context-path: /api
+  context-path: /keemono
 
 spring:
   jpa:
@@ -38,9 +38,9 @@ hibernate:
 logging:
   level:
     root: ERROR
-    org.springframework.web: INFO
-#    org.hibernate.SQL: DEBUG
-#    org.hibernate.type: TRACE
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: INFO
+    org.hibernate.type: INFO
 
 mysql:
   driver: com.mysql.jdbc.Driver

@@ -24,6 +24,7 @@ import java.util.List;
 /**
  * Created by edu on 10/05/2015.
  */
+@PreAuthorize("@securityService.hasProtectedAccess()")
 @Api(value = "/layout", description = "Operations to do about a layout")
 @RequestMapping(value = Constants._LAYOUT_URL)
 @RestController
@@ -48,8 +49,7 @@ public class LayoutController extends BaseMapper {
         return mapper.map(layout, LayoutResponse.class);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
-    //@PreAuthorize("@securityService.hasProtectedAccess()")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN,'ROLE_USER')")
     @ApiOperation(value = "get a layout", notes = "get all layout list", response = ListLayoutResponse.class)
     @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = Constants._LIST, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)

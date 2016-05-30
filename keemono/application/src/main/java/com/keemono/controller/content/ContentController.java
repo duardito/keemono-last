@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -24,6 +25,7 @@ import java.util.List;
 /**
  * Created by edu on 21/05/2016.
  */
+@PreAuthorize("@securityService.hasProtectedAccess()")
 @Api(value = "/content", description = "Operations to do about content")
 @RequestMapping(value = Constants._CONTENT_URL)
 @RestController
