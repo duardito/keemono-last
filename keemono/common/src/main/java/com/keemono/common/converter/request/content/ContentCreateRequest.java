@@ -9,17 +9,17 @@ import io.swagger.annotations.ApiModel;
 @ApiModel(value = "create content request" , description = "content values coming from create request")
 public class ContentCreateRequest {
 
-    private String creator;
+//    private String creator;
     private String content;
     private String name;
 
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
+//    public String getCreator() {
+//        return creator;
+//    }
+//
+//    public void setCreator(String creator) {
+//        this.creator = creator;
+//    }
 
     public String getContent() {
         return content;

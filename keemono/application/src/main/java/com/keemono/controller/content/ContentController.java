@@ -8,7 +8,6 @@ import com.keemono.common.mapper.BaseMapper;
 import com.keemono.common.ordination.OrdinationRequest;
 import com.keemono.common.pagination.PaginationRequest;
 import com.keemono.core.mysql.domain.content.Content;
-import com.keemono.core.mysql.domain.user.User;
 import com.keemono.service.content.IContentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -51,10 +50,7 @@ public class ContentController extends BaseMapper {
     public ListContentResponse getContent(@ModelAttribute @Valid final PaginationRequest paginationRequest,
                                           @Valid final OrdinationRequest ordinationRequest) {
 
-        User user = new User();
-        user.setUuid("user:1695b78b-7218-4e53-897b-51d29c250965");
-
-        List<Content> contents = contentService.getAllContentByOwner(user);
+        List<Content> contents = contentService.getAllContentByOwner();
 
         final ListContentResponse lista = new ListContentResponse();
         List<ContentResponse> out = mapper.mapAsList(contents, ContentResponse.class);

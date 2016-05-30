@@ -14,6 +14,6 @@ public class ContentCreateRequestToContentMapper extends CustomBaseMapper<Conten
 
     public ContentCreateRequestToContentMapper(){
         super();
-        addField("creator", "creator.uuid");
+        //addField("creator", "creator.uuid");
     }
 }

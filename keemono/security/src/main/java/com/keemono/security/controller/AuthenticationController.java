@@ -1,6 +1,5 @@
 package com.keemono.security.controller;
 
-import com.keemono.common.Constants;
 import com.keemono.security.TokenUtils;
 import com.keemono.security.factory.CerberusUser;
 import com.keemono.security.json.AuthenticationRequest;
@@ -29,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Api(value = "/auth", description = "authorization endpoint")
 @RestController
-@RequestMapping(value = Constants._AUTH)
+@RequestMapping(value = "/auth")
 public class AuthenticationController {
 
     @Value("${cerberus.token.header}")
