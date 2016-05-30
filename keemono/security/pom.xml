@@ -8,7 +8,7 @@
         <version>${keemono.project.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
+    <packaging>jar</packaging>
     <artifactId>security</artifactId>
 
     <dependencies>
@@ -21,6 +21,11 @@
             <groupId>org.com.keemono</groupId>
             <artifactId>common</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

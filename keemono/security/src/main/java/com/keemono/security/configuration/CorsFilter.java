@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
@@ -18,10 +19,18 @@ public class CorsFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
-        response.setHeader("Access-Control-Allow-Origin", "*");
+        HttpServletRequest httpRequest = (HttpServletRequest)req;
+
+        String origin = httpRequest.getHeader("Origin");
+        if (origin == null || origin.equalsIgnoreCase("null")) {
+            response.addHeader("Access-Control-Allow-Origin", "*");
+        }
+        else {
+            response.addHeader("Access-Control-Allow-Origin", origin);
+        }
         response.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS, DELETE");
         response.setHeader("Access-Control-Max-Age", "3600");
-        response.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, " + tokenHeader);
+        response.setHeader("Access-Control-Allow-Headers", "x-uw-act-as, Origin, X-Requested-With, Content-Type, Accept, " + tokenHeader);
         chain.doFilter(req, res);
     }
 

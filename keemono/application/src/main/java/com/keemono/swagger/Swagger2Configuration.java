@@ -22,7 +22,7 @@ import static com.google.common.collect.Lists.newArrayList;
  */
 @Configuration
 @EnableSwagger2
-public class SwaggerConfiguration {
+public class Swagger2Configuration {
 
     private Docket baseDocket = new Docket(DocumentationType.SWAGGER_2)
             .pathMapping("/")

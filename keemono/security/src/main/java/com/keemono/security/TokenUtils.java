@@ -4,8 +4,9 @@ import com.keemono.security.factory.CerberusUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mobile.device.Device;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -19,21 +20,19 @@ import java.util.Map;
 @Component
 public class TokenUtils {
 
+    private final Logger logger = Logger.getLogger(this.getClass());
+
     private final String AUDIENCE_UNKNOWN   = "unknown";
     private final String AUDIENCE_WEB       = "web";
     private final String AUDIENCE_MOBILE    = "mobile";
     private final String AUDIENCE_TABLET    = "tablet";
 
-    @Autowired
-    private Environment env;
-
-    /*
     @Value("${cerberus.token.secret}")
     private String secret;
 
     @Value("${cerberus.token.expiration}")
     private Long expiration;
-*/
+
     public String getUsernameFromToken(String token) {
         String username;
         try {
@@ -80,11 +79,9 @@ public class TokenUtils {
 
     private Claims getClaimsFromToken(String token) {
         Claims claims;
-
-        String secret = env.getProperty("cerberus.token.secret");
         try {
             claims = Jwts.parser()
-                    .setSigningKey(secret)
+                    .setSigningKey(this.secret)
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
@@ -98,10 +95,7 @@ public class TokenUtils {
     }
 
     private Date generateExpirationDate() {
-
-        Long expiration =Long.valueOf(env.getProperty("cerberus.token.expiration")) ;
-
-        return new Date(System.currentTimeMillis() + expiration * 1000);
+        return new Date(System.currentTimeMillis() + this.expiration * 1000);
     }
 
     private Boolean isTokenExpired(String token) {
@@ -113,8 +107,16 @@ public class TokenUtils {
         return (lastPasswordReset != null && created.before(lastPasswordReset));
     }
 
-    private String generateAudience() {
-        return this.AUDIENCE_WEB;
+    private String generateAudience(Device device) {
+        String audience = this.AUDIENCE_UNKNOWN;
+        if (device.isNormal()) {
+            audience = this.AUDIENCE_WEB;
+        } else if (device.isTablet()) {
+            audience = AUDIENCE_TABLET;
+        } else if (device.isMobile()) {
+            audience = AUDIENCE_MOBILE;
+        }
+        return audience;
     }
 
     private Boolean ignoreTokenExpiration(String token) {
@@ -122,21 +124,19 @@ public class TokenUtils {
         return (this.AUDIENCE_TABLET.equals(audience) || this.AUDIENCE_MOBILE.equals(audience));
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails, Device device) {
         Map<String, Object> claims = new HashMap<String, Object>();
         claims.put("sub", userDetails.getUsername());
-        claims.put("audience", this.generateAudience());
+        claims.put("audience", this.generateAudience(device));
         claims.put("created", this.generateCurrentDate());
         return this.generateToken(claims);
     }
 
     private String generateToken(Map<String, Object> claims) {
-        String secret = env.getProperty("cerberus.token.secret");
-
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(this.generateExpirationDate())
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, this.secret)
                 .compact();
     }
 
@@ -164,4 +164,5 @@ public class TokenUtils {
         final Date expiration = this.getExpirationDateFromToken(token);
         return (username.equals(user.getUsername()) && !(this.isTokenExpired(token)) && !(this.isCreatedBeforeLastPasswordReset(created, user.getLastPasswordReset())));
     }
+
 }

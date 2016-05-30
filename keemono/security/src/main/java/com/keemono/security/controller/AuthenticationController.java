@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mobile.device.Device;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -44,7 +45,7 @@ public class AuthenticationController {
     private UserDetailsService userDetailsService;
 
     @RequestMapping(method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest) throws AuthenticationException {
+    public ResponseEntity<?> authenticationRequest(@RequestBody AuthenticationRequest authenticationRequest, Device device) throws AuthenticationException {
 
         // Perform the authentication
         Authentication authentication = authenticationManager.authenticate(
@@ -59,7 +60,7 @@ public class AuthenticationController {
 
         // Reload password post-authentication so we can generate token
         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        String token = tokenUtils.generateToken(userDetails);
+        String token = this.tokenUtils.generateToken(userDetails, device);
 
         // Return the token
         return ResponseEntity.ok(new AuthenticationResponse(token));
