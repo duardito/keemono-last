@@ -55,8 +55,6 @@ public class AuthenticationController {
         );
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        SecurityContextHolder.getContext().getAuthentication();
-
         // Reload password post-authentication so we can generate token
         UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         String token = this.tokenUtils.generateToken(userDetails, device);

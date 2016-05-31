@@ -7,12 +7,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mobile.device.Device;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by edu on 22/05/2016.
@@ -22,10 +21,10 @@ public class TokenUtils {
 
     private final Logger logger = Logger.getLogger(this.getClass());
 
-    private final String AUDIENCE_UNKNOWN   = "unknown";
-    private final String AUDIENCE_WEB       = "web";
-    private final String AUDIENCE_MOBILE    = "mobile";
-    private final String AUDIENCE_TABLET    = "tablet";
+    private final String AUDIENCE_UNKNOWN = "unknown";
+    private final String AUDIENCE_WEB = "web";
+    private final String AUDIENCE_MOBILE = "mobile";
+    private final String AUDIENCE_TABLET = "tablet";
 
     @Value("${cerberus.token.secret}")
     private String secret;
@@ -127,6 +126,16 @@ public class TokenUtils {
     public String generateToken(UserDetails userDetails, Device device) {
         Map<String, Object> claims = new HashMap<String, Object>();
         claims.put("sub", userDetails.getUsername());
+        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
+        Iterator<? extends GrantedAuthority> it = authorities.iterator();
+        String[] roles = new String[authorities.size()];
+        int pos = 0;
+        while (it.hasNext()) {
+            GrantedAuthority auth = it.next();
+            roles[pos++] = auth.getAuthority();
+        }
+
+        claims.put("roles", roles);
         claims.put("audience", this.generateAudience(device));
         claims.put("created", this.generateCurrentDate());
         return this.generateToken(claims);

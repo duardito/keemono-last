@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,17 +46,14 @@ public class ContentController extends BaseMapper {
     }
 
     @ApiOperation(value = "get all content by user", notes = "get all content list", response = ListContentResponse.class)
-    @ResponseStatus(value = HttpStatus.OK)
     @RequestMapping(value = Constants._LIST, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
-    public ListContentResponse getContent(@ModelAttribute @Valid final PaginationRequest paginationRequest,
-                                          @Valid final OrdinationRequest ordinationRequest) {
+    public ResponseEntity<List<ContentResponse>> getContent(@ModelAttribute @Valid final PaginationRequest paginationRequest,
+                                        @Valid final OrdinationRequest ordinationRequest) {
 
         List<Content> contents = contentService.getAllContentByOwner();
-
-        final ListContentResponse lista = new ListContentResponse();
         List<ContentResponse> out = mapper.mapAsList(contents, ContentResponse.class);
-        lista.addAll(out);
-        return lista;
+
+        return ResponseEntity.ok(out);
     }
 
 }
