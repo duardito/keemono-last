@@ -6,6 +6,7 @@ import com.keemono.base.SimpleDatasetWithOperation;
 import com.keemono.common.Constants;
 import com.keemono.common.converter.request.page.PageContentBuilder;
 import org.dbunit.operation.DatabaseOperation;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -19,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by edu on 02/01/2016.
  */
+@Ignore
 public class BasicPageTest  extends AbstractBaseITCase {
 
     private static final String INIT_PAGE_DATASET = "dataset/page/basic-page.xml";
