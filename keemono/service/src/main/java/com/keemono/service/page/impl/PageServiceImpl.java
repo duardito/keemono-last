@@ -5,16 +5,14 @@ import com.keemono.core.mysql.Repository.page.IPageRepository;
 import com.keemono.core.mysql.Repository.user.IUserRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.core.mysql.domain.page.Page;
-import com.keemono.core.mysql.domain.user.User;
 import com.keemono.service.layout.ILayoutService;
 import com.keemono.service.page.IPageService;
-
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 /**
  * Created by edu on 09/05/2015.
@@ -49,10 +47,9 @@ public class PageServiceImpl extends BaseMapper implements IPageService {
     public Page createPage(Page page) {
 
         Layout layout = layoutService.getLayoutByUUId(page.getLayout().getUuid());
-        User user = userRepository.findOne(page.getCreator().getUuid());
 
         page.setLayout(layout);
-        page.setCreator(user);
+        page.setCreator(getLoggedUser());
         page = pageRepository.save(page);
         return page;
     }
@@ -71,6 +68,7 @@ public class PageServiceImpl extends BaseMapper implements IPageService {
             page.setName(pageDto.getName());
         }
 
+        page.setCreator(getLoggedUser());
         page = pageRepository.update(page);
         return page;
     }

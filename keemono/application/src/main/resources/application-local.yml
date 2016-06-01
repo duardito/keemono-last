@@ -38,9 +38,9 @@ hibernate:
 logging:
   level:
     root: ERROR
-    org.springframework.web: DEBUG
-    org.hibernate.SQL: DEBUG
-    org.hibernate.type: DEBUG
+    org.springframework.web: INFO
+    org.hibernate.SQL: INFO
+    org.hibernate.type: INFO
 
 mysql:
   driver: com.mysql.jdbc.Driver

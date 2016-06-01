@@ -3,7 +3,6 @@ package com.keemono.service.layout.impl;
 import com.keemono.common.mapper.BaseMapper;
 import com.keemono.core.mysql.Repository.layout.ILayoutRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
-import com.keemono.core.mysql.domain.user.User;
 import com.keemono.service.layout.ILayoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,15 +24,8 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
     @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class,readOnly = false)
     public Layout createLayout(Layout layout) throws Exception {
 
-        //FIXME: quitar esta validacion cuando ya estemos pasando el usuario logeado
-        if(layout.getCreator() !=null){
-            User user = userRepository.findOne(layout.getCreator().getUuid());
-            if(user !=null){
-                layout.setCreator(user);
-            }
-        }
+        layout.setCreator(getLoggedUser());
         try {
-
             ILayoutRepository.save(layout);
         }catch (Exception e) {
             throw new Exception(e);
@@ -53,10 +45,8 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
         if(layout.getName()!=null && !layout.getName().isEmpty()){
             layoutToUpdate.setName(layout.getName());
         }
-        if(layout.getCreator()!=null ){
-            User user = userRepository.findOne(layout.getCreator().getUuid());
-            layoutToUpdate.setCreator(user);
-        }
+
+        layoutToUpdate.setCreator(getLoggedUser());
 
         layoutToUpdate = ILayoutRepository.update(layoutToUpdate);
         return layoutToUpdate;
