@@ -14,7 +14,6 @@ public class LayoutExtendedRequestToLayoutMapper extends CustomBaseMapper<Layout
 
     public LayoutExtendedRequestToLayoutMapper(){
         super();
-        addField("creator", "creator.uuid");
     }
 
 }

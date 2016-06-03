@@ -14,7 +14,6 @@ public class LayoutCreateRequestToLayoutMapper extends CustomBaseMapper<LayoutCr
     public LayoutCreateRequestToLayoutMapper(){
         super();
 
-        addField("creator", "creator.uuid");
         addField("schema", "schema");
         addField("name", "name");
     }

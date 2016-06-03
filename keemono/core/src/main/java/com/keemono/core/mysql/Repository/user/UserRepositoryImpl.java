@@ -7,6 +7,7 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -39,10 +40,13 @@ public class UserRepositoryImpl extends BaseRepository implements IUserRepositor
             User user = (User) criteria.uniqueResult();
             return user;
         }catch (Exception e){
-            System.out.println(e.getCause());
             throw new Exception(e);
         }
+    }
 
-
+    @Override
+    public List<User> findAll(){
+        Criteria criteria = getSession().createCriteria(User.class);
+        return criteria.list();
     }
 }

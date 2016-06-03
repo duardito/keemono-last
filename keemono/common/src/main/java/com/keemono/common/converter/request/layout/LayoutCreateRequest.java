@@ -11,15 +11,6 @@ public class LayoutCreateRequest {
 
     private String name;
     private String schema;
-    private String creator;
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
 
     public String getName() {
         return name;
