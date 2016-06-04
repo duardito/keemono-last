@@ -15,7 +15,7 @@ cerberus:
   token:
     header: api_key
     secret: sssshhhh!
-    expiration: 60480
+    expiration: 180
   route:
     authentication: auth
     refresh: refresh

@@ -32,7 +32,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class , readOnly = true)
     public List<User> getUserList() {
         return userRepository.findAll();
     }
