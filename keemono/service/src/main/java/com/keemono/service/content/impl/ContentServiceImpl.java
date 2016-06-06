@@ -16,26 +16,23 @@ import java.util.List;
  * Created by edu on 21/05/2016.
  */
 @Service
-public class ContentServiceImpl extends BaseMapper implements IContentService{
+public class ContentServiceImpl extends BaseMapper implements IContentService {
 
     @Autowired
     private IContentRepository contentRepository;
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class)
-    public Content createContent(Content content){
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public Content createContent(Content content) {
 
-        final User user = userRepository.findOne(content.getCreator().getUuid());
-        content.setCreator(user);
+        content.setCreator(getLoggedUser());
         return contentRepository.save(content);
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED,   rollbackFor = Exception.class, readOnly = true)
-    public List<Content> getAllContentByOwner(User creator){
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class, readOnly = true)
+    public List<Content> getAllContentByOwner() {
 
-        final User user = userRepository.findOne(creator.getUuid());
-
-        return contentRepository.findAllByCreator(user);
+        return contentRepository.findAllByCreator(getLoggedUser());
     }
 }

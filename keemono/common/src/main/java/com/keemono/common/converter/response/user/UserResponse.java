@@ -1,7 +1,7 @@
 package com.keemono.common.converter.response.user;
 
 import com.keemono.common.converter.base.AbstractResponse;
-import com.wordnik.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModel;
 
 /**
  * Created by edu on 21/05/2016.

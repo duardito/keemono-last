@@ -1,6 +1,7 @@
 package com.keemono.common.converter.request.layout;
 
-import com.wordnik.swagger.annotations.ApiModel;
+
+import io.swagger.annotations.ApiModel;
 
 /**
  * Created by edu on 08/03/2016.
@@ -10,15 +11,6 @@ public class LayoutCreateRequest {
 
     private String name;
     private String schema;
-    private String creator;
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
 
     public String getName() {
         return name;

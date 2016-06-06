@@ -8,10 +8,8 @@ import com.keemono.common.converter.base.AbstractRequest;
 public class PageRequest extends AbstractRequest {
 
     private String layout;
-
     private String name;
 
-    private String creator;
 
     public String getLayout() {
         return layout;
@@ -25,13 +23,6 @@ public class PageRequest extends AbstractRequest {
         return name;
     }
 
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
 
     public void setName(String name) {
         this.name = name;

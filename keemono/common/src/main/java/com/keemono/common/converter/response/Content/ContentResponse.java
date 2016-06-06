@@ -2,8 +2,9 @@ package com.keemono.common.converter.response.Content;
 
 import com.keemono.common.converter.base.AbstractResponse;
 import com.keemono.common.converter.response.user.UserResponse;
-import com.wordnik.swagger.annotations.ApiModel;
-import com.wordnik.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 
 /**
  * Created by edu on 21/05/2016.

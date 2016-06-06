@@ -1,0 +1,1 @@
+INSERT INTO `user` (`id`, `name`, `uuid`, `lastname`, `email`, `username`, `password`, `lastPasswordReset`, `authorities`) VALUES (1,'edu','user:1695b78b-7218-4e53-897b-51d29c250965','frades','edu@gmail.com','edu','$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi',NULL,'ROLE_ADMIN,ROLE_ROOT');

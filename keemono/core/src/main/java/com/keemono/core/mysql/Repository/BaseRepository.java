@@ -15,7 +15,7 @@ public class BaseRepository{
 
     @Autowired
     private EntityManager entityManager;
-    
+
     private Session session;
 
     protected Session getSession(){
