@@ -14,6 +14,6 @@ public class PageRequestToPageMapper extends CustomBaseMapper<PageRequest, Page>
     public PageRequestToPageMapper(){
         super();
         addField("layout", "layout.uuid");
-        addField("creator", "creator.uuid");
+
     }
 }
