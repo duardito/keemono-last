@@ -10,6 +10,10 @@ spring:
     url: jdbc:mysql://46.4.112.248:10001/keemonotest?UseUnicode=true&amp;characterEncoding=utf8&amp;default_schema=true
     username: keemono
     password: keemono
+    validation-query: SELECT 1
+    test-while-idle: true
+    time-between-eviction-runs-millis: 60000
+
 
 cerberus:
   token:
