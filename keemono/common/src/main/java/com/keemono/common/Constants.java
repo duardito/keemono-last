@@ -12,6 +12,7 @@ public final class Constants {
     public static final String _LIST ="/list";
     public static final String _AUTH ="/auth";
     public static final String _USER_URL ="/user";
+    public static final String _PAGE_CONTENT_URL ="/pagecontent";
     //path variables
     public static final String _UUID ="{uuid}";
 
