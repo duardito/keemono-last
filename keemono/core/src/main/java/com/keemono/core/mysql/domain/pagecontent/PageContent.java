@@ -1,5 +1,6 @@
 package com.keemono.core.mysql.domain.pagecontent;
 
+import com.keemono.core.mysql.domain.content.Content;
 import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.core.mysql.domain.page.Page;
 
@@ -25,8 +26,20 @@ public class PageContent implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     private Layout layout;
 
+    @JoinColumn(name = "content_id",referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    private Content content;
+
     @Column(name = "content_div", nullable = false,length = 2000)
     private String contentDiv;
+
+    public Content getContent() {
+        return content;
+    }
+
+    public void setContent(Content content) {
+        this.content = content;
+    }
 
     public Long getId() {
         return id;

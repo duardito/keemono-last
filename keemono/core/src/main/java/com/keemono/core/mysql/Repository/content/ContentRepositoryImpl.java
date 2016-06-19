@@ -3,8 +3,6 @@ package com.keemono.core.mysql.Repository.content;
 import com.keemono.core.mysql.Repository.BaseRepository;
 import com.keemono.core.mysql.domain.content.Content;
 import com.keemono.core.mysql.domain.content.Content_;
-import com.keemono.core.mysql.domain.division.Division;
-import com.keemono.core.mysql.domain.layout.Layout_;
 import com.keemono.core.mysql.domain.user.User;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
@@ -45,9 +43,9 @@ public class ContentRepositoryImpl extends BaseRepository implements IContentRep
 
     @Override
     public Content findUUID(String uuid) {
-        Criteria criteria = getSession().createCriteria(Division.class)
-                .setFetchMode(Layout_.creator.getName(), FetchMode.JOIN);
-        criteria.add(Restrictions.eq(Layout_.uuid.getName() ,uuid));
+        Criteria criteria = getSession().createCriteria(Content.class)
+                .setFetchMode(Content_.creator.getName(), FetchMode.JOIN);
+        criteria.add(Restrictions.eq(Content_.uuid.getName() ,uuid));
         Content layout = (Content) criteria.uniqueResult();
         return layout;
     }
