@@ -1,5 +1,6 @@
 package com.keemono.core.mysql.Repository.pagecontent;
 
+import com.keemono.core.mysql.domain.page.Page;
 import com.keemono.core.mysql.domain.pagecontent.PageContent;
 
 import java.util.List;
@@ -16,5 +17,5 @@ public interface IPageContentRepository {
     PageContent findOne(Long id);
 
 
-    List<PageContent> getPageContentByPage(String uuid);
+    List<PageContent> getPageContentByPage(Page page);
 }

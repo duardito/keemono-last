@@ -2,6 +2,7 @@ package com.keemono.controller.pagecontent;
 
 import com.keemono.common.Constants;
 import com.keemono.common.converter.request.pagecontent.PageContentRequest;
+import com.keemono.common.converter.response.page.PageResponse;
 import com.keemono.common.converter.response.pagecontent.PageContentResponse;
 import com.keemono.common.mapper.BaseMapper;
 import com.keemono.core.mysql.domain.pagecontent.PageContent;
@@ -32,11 +33,21 @@ public class PageContentController extends BaseMapper {
     @ResponseStatus(value = HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST, produces = Constants._APPLICATION_JSON, consumes = Constants._APPLICATION_JSON)
     public PageContentResponse createPageContent(@ApiParam(value = "basic data to create a page content", required = true)
-                                                     @RequestBody @Valid final PageContentRequest pageContentRequest){
+                                                 @RequestBody @Valid final PageContentRequest pageContentRequest) {
 
-        PageContent pageContent= mapper.map(pageContentRequest, PageContent.class);
+        PageContent pageContent = mapper.map(pageContentRequest, PageContent.class);
         pageContent = pageContentService.save(pageContent);
         return mapper.map(pageContent, PageContentResponse.class);
+    }
+
+    @ApiOperation(value = "get  a page", notes = "get  a page content", response = PageResponse.class)
+    @ResponseStatus(value = HttpStatus.OK)
+    @RequestMapping(value = Constants._UUID, method = RequestMethod.GET, produces = Constants._APPLICATION_JSON)
+    public PageContentResponse getPage(@ApiParam(value = "id of page", required = true) @PathVariable String uuid) {
+
+        PageContentResponse pageContent = pageContentService.getContentByPage(uuid);
+
+        return pageContent;
 
     }
 

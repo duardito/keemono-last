@@ -1,5 +1,7 @@
 package com.keemono.service.pagecontent.impl;
 
+import com.keemono.common.converter.response.pagecontent.ExtendedPageContentResponse;
+import com.keemono.common.converter.response.pagecontent.PageContentResponse;
 import com.keemono.common.mapper.BaseMapper;
 import com.keemono.core.mysql.Repository.content.IContentRepository;
 import com.keemono.core.mysql.Repository.layout.ILayoutRepository;
@@ -56,8 +58,15 @@ public class PageContentServiceImpl extends BaseMapper implements IPageContentSe
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class,readOnly = true)
-    public List<PageContent> getContentByPage(String uuid){
-        return pageContentRepository.getPageContentByPage(uuid);
+    public PageContentResponse getContentByPage(String uuid){
+
+        Page page = pageRepository.findUUID(uuid);
+        List<PageContent> response = pageContentRepository.getPageContentByPage(page);
+
+        ExtendedPageContentResponse extended = new ExtendedPageContentResponse();
+        extended.setResponse(response);
+        PageContentResponse pageContent = mapper.map(extended, PageContentResponse.class);
+        return pageContent;
     }
 
     @Override

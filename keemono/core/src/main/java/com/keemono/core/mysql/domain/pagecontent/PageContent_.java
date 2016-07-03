@@ -1,5 +1,6 @@
 package com.keemono.core.mysql.domain.pagecontent;
 
+import com.keemono.core.mysql.domain.content.Content;
 import com.keemono.core.mysql.domain.layout.Layout;
 import com.keemono.core.mysql.domain.page.Page;
 
@@ -15,6 +16,7 @@ public abstract class PageContent_  {
     public static volatile SingularAttribute<PageContent, Long> id;
     public static volatile SingularAttribute<PageContent, Page> page;
     public static volatile SingularAttribute<PageContent, Layout> layout;
+    public static volatile SingularAttribute<PageContent, Content> content;
     public static volatile SingularAttribute<PageContent, String> contentDiv;
 
 }

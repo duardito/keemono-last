@@ -18,6 +18,9 @@ public class PageContent implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "uuid", nullable = false, length = 36)
+    private String uuid;
+
     @JoinColumn(name = "page_id",referencedColumnName = "id")
     @OneToOne(fetch = FetchType.LAZY)
     private Page page;
@@ -32,6 +35,14 @@ public class PageContent implements Serializable {
 
     @Column(name = "content_div", nullable = false,length = 2000)
     private String contentDiv;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public Content getContent() {
         return content;
