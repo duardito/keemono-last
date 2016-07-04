@@ -14,6 +14,15 @@ public class ContentResponse extends AbstractResponse {
 
     private String name;
     private String content;
+    private String divId;
+
+    public String getDivId() {
+        return divId;
+    }
+
+    public void setDivId(String divId) {
+        this.divId = divId;
+    }
 
     @ApiModelProperty(value = "creator", required = true)
     private UserResponse creator;

@@ -1,5 +1,6 @@
 package com.keemono.service.layout.impl;
 
+import com.google.gson.Gson;
 import com.keemono.common.mapper.BaseMapper;
 import com.keemono.core.mysql.Repository.layout.ILayoutRepository;
 import com.keemono.core.mysql.domain.layout.Layout;
@@ -25,6 +26,10 @@ public class LayoutServiceImpl extends BaseMapper implements ILayoutService {
     public Layout createLayout(Layout layout) throws Exception {
 
         layout.setCreator(getLoggedUser());
+        Gson gson = new Gson();
+        String layoutDiv = gson.toJson(layout.getSchema());
+
+
         try {
             ILayoutRepository.save(layout);
         }catch (Exception e) {

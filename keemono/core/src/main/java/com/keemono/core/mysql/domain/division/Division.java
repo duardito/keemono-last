@@ -32,7 +32,7 @@ public class Division extends AbstractDomain {
         this.layout = layout;
     }
 
-    @Column(name = "data", nullable = false,length = 2000)
+    @Column(name = "schema", nullable = false,length = 2000)
     private String schema;
 
     public Content getContent() {
